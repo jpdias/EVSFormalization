@@ -11,7 +11,7 @@ operations
 	
 	public toInit: () ==> ()
 	toInit() == currentState := <INIT>
-	pre currentState = <CONFIRM>
+	pre currentState = <STOP> or  currentState = <CONFIRM>
 	post currentState = <INIT>;
 	
 	public toDone: () ==> ()

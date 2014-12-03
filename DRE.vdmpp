@@ -5,13 +5,14 @@ instance variables
 	private log: seq of RTAL :=[];
 	private logEntry: RTAL;
 	private CurrentPBE: PBE;
-	private StateMachine: VoteState;
+	private StateMachine: VoteState := new VoteState();
 	private CurrentChoice: Candidate; 
 	private CurrentVoter: Voter;
 operations
--- Constructor~W
+-- Constructor
 	public DRE: PBE ==> DRE
 	DRE(pbe) == (CurrentPBE := pbe;
+							StateMachine.toStop();
 							logEntry := new RTAL("Election Started");
 							log := log ^ [logEntry];
 							return self)
@@ -43,7 +44,10 @@ operations
 			--Memory := Memory munion {v|->c};
 	)
 	pre StateMachine.currentState=<STOP>
-	post StateMachine.currentState=<INIT>;
+			and v in set CurrentPBE.voters
+			and v not in set dom memory
+	post StateMachine.currentState=<INIT>
+			 and v = CurrentVoter;
 
 	public Vote: Candidate ==> ()
 	Vote(c) == (
@@ -51,7 +55,12 @@ operations
 			CurrentChoice := c
 	)
 	pre StateMachine.currentState=<INIT>
-	post StateMachine.currentState=<CONFIRM>;
+			and CurrentVoter in set CurrentPBE.voters
+			and c in set CurrentPBE.ballot
+	post StateMachine.currentState=<CONFIRM>
+			 and c = CurrentChoice
+			 and CurrentVoter in set CurrentPBE.voters
+			 and CurrentChoice in set CurrentPBE.ballot;
 	
 	public ConfirmVote: bool ==>()
 	ConfirmVote(confirm) == (
@@ -61,7 +70,6 @@ operations
 						StateMachine.toStop()
 					 )
 			else(StateMachine.toInit();)
-		
 	)
 	pre StateMachine.currentState=<CONFIRM>
 	post StateMachine.currentState=<STOP> or StateMachine.currentState=<INIT>;
