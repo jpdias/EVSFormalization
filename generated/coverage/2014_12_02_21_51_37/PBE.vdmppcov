@@ -1,0 +1,20 @@
+class PBE
+instance variables
+	public Ballot: seq of Candidate:=[];
+	--public Code = token;
+operations
+	public addToBallot: Candidate ==> ()
+	addToBallot(c) == Ballot := [c] ^ Ballot
+	post not hasRepetitions[Candidate](Ballot) and  
+			 Ballot = [c] ^ Ballot~; 
+functions
+	-- Checks if a sequence of elements of type @T has no duplicates
+  public hasRepetitions[@T](s: seq of @T) res: bool ==
+    exists i, j in set inds s & i <> j and s(i) = s(j);
+  -- Removes an element from a sequence  of elements of type @T
+  public remove[@T](e: @T, s: seq of @T) res: seq of @T ==
+   [s(i) | i in set inds s & s(i) <> e];
+  -- Obtains the index of an element in a sequence of distinct elements of type @T
+  public index[@T](e: @T, s: seq1 of @T) res: nat1 == iota i in set inds s & s(i) = e
+    pre (e in set elems s) and not hasRepetitions[@T](s);
+end PBE

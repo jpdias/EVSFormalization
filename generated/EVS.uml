@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_LHdBcHrlEeSKYcz1HloBKg" name="EVS">
+  <packagedElement xmi:type="uml:Class" xmi:id="_LHdBcXrlEeSKYcz1HloBKg" name="Candidate">
+    <ownedAttribute xmi:id="_LHdBcnrlEeSKYcz1HloBKg" name="name" visibility="public" type="_LHePkXrlEeSKYcz1HloBKg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdBc3rlEeSKYcz1HloBKg" value="(undefined)"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_LHdogHrlEeSKYcz1HloBKg" name="Candidate" visibility="public">
+      <ownedParameter xmi:id="_LHdogXrlEeSKYcz1HloBKg" name="n" type="_LHePkXrlEeSKYcz1HloBKg"/>
+      <ownedParameter xmi:id="_LHdognrlEeSKYcz1HloBKg" type="_LHdBcXrlEeSKYcz1HloBKg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LHdog3rlEeSKYcz1HloBKg" name="DRE">
+    <ownedAttribute xmi:id="_LHdohHrlEeSKYcz1HloBKg" name="code" visibility="private" type="_LHePo3rlEeSKYcz1HloBKg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdohXrlEeSKYcz1HloBKg" value="9999"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_LHdohnrlEeSKYcz1HloBKg" name="memory" visibility="private" type="_LHdBcXrlEeSKYcz1HloBKg" isUnique="false" association="_LHePpnrlEeSKYcz1HloBKg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LHdoh3rlEeSKYcz1HloBKg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LHdoiHrlEeSKYcz1HloBKg" value="1"/>
+      <qualifier xmi:id="_LHdoiXrlEeSKYcz1HloBKg" type="_LHdot3rlEeSKYcz1HloBKg">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LHdoinrlEeSKYcz1HloBKg" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LHdoi3rlEeSKYcz1HloBKg" value="1"/>
+      </qualifier>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdojHrlEeSKYcz1HloBKg" value="{|->}"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_LHdojXrlEeSKYcz1HloBKg" name="log" visibility="private" type="_LHePmHrlEeSKYcz1HloBKg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdojnrlEeSKYcz1HloBKg" value="[]"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_LHdoj3rlEeSKYcz1HloBKg" name="logEntry" visibility="private" type="_LHdor3rlEeSKYcz1HloBKg" association="_LHePqnrlEeSKYcz1HloBKg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LHdokHrlEeSKYcz1HloBKg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LHdokXrlEeSKYcz1HloBKg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdoknrlEeSKYcz1HloBKg" value="(undefined)"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_LHdok3rlEeSKYcz1HloBKg" name="CurrentPBE" visibility="private" type="_LHdonnrlEeSKYcz1HloBKg" association="_LHePrnrlEeSKYcz1HloBKg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LHdolHrlEeSKYcz1HloBKg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LHdolXrlEeSKYcz1HloBKg" value="1"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdolnrlEeSKYcz1HloBKg" value="(undefined)"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_LHdol3rlEeSKYcz1HloBKg" name="DRE" visibility="public">
+      <ownedParameter xmi:id="_LHdomHrlEeSKYcz1HloBKg" name="pbe" type="_LHdonnrlEeSKYcz1HloBKg"/>
+      <ownedParameter xmi:id="_LHdomXrlEeSKYcz1HloBKg" type="_LHdog3rlEeSKYcz1HloBKg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_LHdomnrlEeSKYcz1HloBKg" name="RegisterVote" visibility="public">
+      <ownedParameter xmi:id="_LHdom3rlEeSKYcz1HloBKg" name="v" type="_LHdot3rlEeSKYcz1HloBKg"/>
+      <ownedParameter xmi:id="_LHdonHrlEeSKYcz1HloBKg" name="c" type="_LHdBcXrlEeSKYcz1HloBKg"/>
+      <ownedParameter xmi:id="_LHdonXrlEeSKYcz1HloBKg" type="_LHePpHrlEeSKYcz1HloBKg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LHdonnrlEeSKYcz1HloBKg" name="PBE">
+    <ownedAttribute xmi:id="_LHdon3rlEeSKYcz1HloBKg" name="ballot" visibility="public" type="_LHdBcXrlEeSKYcz1HloBKg" association="_LHePsnrlEeSKYcz1HloBKg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LHdooHrlEeSKYcz1HloBKg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LHdooXrlEeSKYcz1HloBKg" value="*"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdoonrlEeSKYcz1HloBKg" value="{}"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_LHdoo3rlEeSKYcz1HloBKg" name="voters" visibility="public" type="_LHdot3rlEeSKYcz1HloBKg" association="_LHePtnrlEeSKYcz1HloBKg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LHdopHrlEeSKYcz1HloBKg"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LHdopXrlEeSKYcz1HloBKg" value="*"/>
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdopnrlEeSKYcz1HloBKg" value="{}"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_LHdop3rlEeSKYcz1HloBKg" name="code" visibility="public" isStatic="true" type="_LHePo3rlEeSKYcz1HloBKg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdoqHrlEeSKYcz1HloBKg" value="9999"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_LHdoqXrlEeSKYcz1HloBKg" name="addToBallot" visibility="public">
+      <ownedParameter xmi:id="_LHdoqnrlEeSKYcz1HloBKg" name="c" type="_LHdBcXrlEeSKYcz1HloBKg"/>
+      <ownedParameter xmi:id="_LHdoq3rlEeSKYcz1HloBKg" type="_LHePpHrlEeSKYcz1HloBKg" direction="return"/>
+    </ownedOperation>
+    <ownedOperation xmi:id="_LHdorHrlEeSKYcz1HloBKg" name="addVoter" visibility="public">
+      <ownedParameter xmi:id="_LHdorXrlEeSKYcz1HloBKg" name="v" type="_LHdot3rlEeSKYcz1HloBKg"/>
+      <ownedParameter xmi:id="_LHdornrlEeSKYcz1HloBKg" type="_LHePpHrlEeSKYcz1HloBKg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LHdor3rlEeSKYcz1HloBKg" name="RTAL">
+    <ownedAttribute xmi:id="_LHdosHrlEeSKYcz1HloBKg" name="entry" visibility="public" type="_LHePkXrlEeSKYcz1HloBKg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdosXrlEeSKYcz1HloBKg" value="(undefined)"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_LHdosnrlEeSKYcz1HloBKg" name="iteration" visibility="public" isStatic="true" type="_LHePpXrlEeSKYcz1HloBKg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdos3rlEeSKYcz1HloBKg" value="0"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_LHdotHrlEeSKYcz1HloBKg" name="RTAL" visibility="public">
+      <ownedParameter xmi:id="_LHdotXrlEeSKYcz1HloBKg" name="message" type="_LHePkXrlEeSKYcz1HloBKg"/>
+      <ownedParameter xmi:id="_LHdotnrlEeSKYcz1HloBKg" type="_LHdor3rlEeSKYcz1HloBKg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_LHdot3rlEeSKYcz1HloBKg" name="Voter">
+    <ownedAttribute xmi:id="_LHdouHrlEeSKYcz1HloBKg" name="name" visibility="public" type="_LHePkXrlEeSKYcz1HloBKg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdouXrlEeSKYcz1HloBKg" value="(undefined)"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_LHdounrlEeSKYcz1HloBKg" name="code" visibility="public" type="_LHePo3rlEeSKYcz1HloBKg">
+      <defaultValue xmi:type="uml:LiteralString" xmi:id="_LHdou3rlEeSKYcz1HloBKg" value="(undefined)"/>
+    </ownedAttribute>
+    <ownedOperation xmi:id="_LHdovHrlEeSKYcz1HloBKg" name="Voter" visibility="public">
+      <ownedParameter xmi:id="_LHdovXrlEeSKYcz1HloBKg" name="n" type="_LHePkXrlEeSKYcz1HloBKg"/>
+      <ownedParameter xmi:id="_LHdovnrlEeSKYcz1HloBKg" name="number" type="_LHePo3rlEeSKYcz1HloBKg"/>
+      <ownedParameter xmi:id="_LHdov3rlEeSKYcz1HloBKg" type="_LHdot3rlEeSKYcz1HloBKg" direction="return"/>
+    </ownedOperation>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_LHdowHrlEeSKYcz1HloBKg" name="Composite VDM Types">
+    <packagedElement xmi:type="uml:Class" xmi:id="_LHdowXrlEeSKYcz1HloBKg" name="Seq&lt;T>">
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="_LHdownrlEeSKYcz1HloBKg" name="T" parameter="_LHdow3rlEeSKYcz1HloBKg">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_LHdow3rlEeSKYcz1HloBKg" parameteredElement="_LHdoxHrlEeSKYcz1HloBKg">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="_LHdoxHrlEeSKYcz1HloBKg" name="T" templateParameter="_LHdow3rlEeSKYcz1HloBKg"/>
+        </ownedParameter>
+      </ownedTemplateSignature>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_LHdoxXrlEeSKYcz1HloBKg" name="Map&lt;D,R>">
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="_LHdoxnrlEeSKYcz1HloBKg" name="D,R" parameter="_LHdox3rlEeSKYcz1HloBKg _LHdoyXrlEeSKYcz1HloBKg">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_LHdox3rlEeSKYcz1HloBKg" parameteredElement="_LHdoyHrlEeSKYcz1HloBKg">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="_LHdoyHrlEeSKYcz1HloBKg" name="D" templateParameter="_LHdox3rlEeSKYcz1HloBKg"/>
+        </ownedParameter>
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_LHdoyXrlEeSKYcz1HloBKg" parameteredElement="_LHdoynrlEeSKYcz1HloBKg">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="_LHdoynrlEeSKYcz1HloBKg" name="R" templateParameter="_LHdoyXrlEeSKYcz1HloBKg"/>
+        </ownedParameter>
+      </ownedTemplateSignature>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_LHdoy3rlEeSKYcz1HloBKg" name="Set&lt;T>">
+      <ownedTemplateSignature xmi:type="uml:RedefinableTemplateSignature" xmi:id="_LHdozHrlEeSKYcz1HloBKg" name="T" parameter="_LHdozXrlEeSKYcz1HloBKg">
+        <ownedParameter xmi:type="uml:ClassifierTemplateParameter" xmi:id="_LHdozXrlEeSKYcz1HloBKg" parameteredElement="_LHdoznrlEeSKYcz1HloBKg">
+          <ownedParameteredElement xmi:type="uml:Class" xmi:id="_LHdoznrlEeSKYcz1HloBKg" name="T" templateParameter="_LHdozXrlEeSKYcz1HloBKg"/>
+        </ownedParameter>
+      </ownedTemplateSignature>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_LHePkHrlEeSKYcz1HloBKg" name="Binding classes">
+    <packagedElement xmi:type="uml:Class" xmi:id="_LHePkXrlEeSKYcz1HloBKg" name="Seq&lt;char>">
+      <templateBinding xmi:id="_LHePknrlEeSKYcz1HloBKg" signature="_LHdownrlEeSKYcz1HloBKg">
+        <parameterSubstitution xmi:id="_LHePk3rlEeSKYcz1HloBKg" actual="_LHePonrlEeSKYcz1HloBKg" formal="_LHdow3rlEeSKYcz1HloBKg"/>
+      </templateBinding>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_LHePlHrlEeSKYcz1HloBKg" name="Map&lt;Voter,Candidate>">
+      <templateBinding xmi:id="_LHePlXrlEeSKYcz1HloBKg" signature="_LHdoxnrlEeSKYcz1HloBKg">
+        <parameterSubstitution xmi:id="_LHePlnrlEeSKYcz1HloBKg" actual="_LHdot3rlEeSKYcz1HloBKg" formal="_LHdox3rlEeSKYcz1HloBKg"/>
+        <parameterSubstitution xmi:id="_LHePl3rlEeSKYcz1HloBKg" actual="_LHdBcXrlEeSKYcz1HloBKg" formal="_LHdoyXrlEeSKYcz1HloBKg"/>
+      </templateBinding>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_LHePmHrlEeSKYcz1HloBKg" name="Seq&lt;RTAL>">
+      <templateBinding xmi:id="_LHePmXrlEeSKYcz1HloBKg" signature="_LHdownrlEeSKYcz1HloBKg">
+        <parameterSubstitution xmi:id="_LHePmnrlEeSKYcz1HloBKg" actual="_LHdor3rlEeSKYcz1HloBKg" formal="_LHdow3rlEeSKYcz1HloBKg"/>
+      </templateBinding>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_LHePm3rlEeSKYcz1HloBKg" name="Set&lt;Candidate>">
+      <templateBinding xmi:id="_LHePnHrlEeSKYcz1HloBKg" signature="_LHdozHrlEeSKYcz1HloBKg">
+        <parameterSubstitution xmi:id="_LHePnXrlEeSKYcz1HloBKg" actual="_LHdBcXrlEeSKYcz1HloBKg" formal="_LHdozXrlEeSKYcz1HloBKg"/>
+      </templateBinding>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_LHePnnrlEeSKYcz1HloBKg" name="Set&lt;Voter>">
+      <templateBinding xmi:id="_LHePn3rlEeSKYcz1HloBKg" signature="_LHdozHrlEeSKYcz1HloBKg">
+        <parameterSubstitution xmi:id="_LHePoHrlEeSKYcz1HloBKg" actual="_LHdot3rlEeSKYcz1HloBKg" formal="_LHdozXrlEeSKYcz1HloBKg"/>
+      </templateBinding>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_LHePoXrlEeSKYcz1HloBKg" name="Basic VDM Types">
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_LHePonrlEeSKYcz1HloBKg" name="char"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_LHePo3rlEeSKYcz1HloBKg" name="nat1"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_LHePpHrlEeSKYcz1HloBKg" name="Void"/>
+    <packagedElement xmi:type="uml:PrimitiveType" xmi:id="_LHePpXrlEeSKYcz1HloBKg" name="nat"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LHePpnrlEeSKYcz1HloBKg" visibility="private" memberEnd="_LHdohnrlEeSKYcz1HloBKg _LHePp3rlEeSKYcz1HloBKg">
+    <ownedEnd xmi:id="_LHePp3rlEeSKYcz1HloBKg" name="" type="_LHdog3rlEeSKYcz1HloBKg" association="_LHePpnrlEeSKYcz1HloBKg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LHePqHrlEeSKYcz1HloBKg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LHePqXrlEeSKYcz1HloBKg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LHePqnrlEeSKYcz1HloBKg" visibility="private" memberEnd="_LHdoj3rlEeSKYcz1HloBKg _LHePq3rlEeSKYcz1HloBKg">
+    <ownedEnd xmi:id="_LHePq3rlEeSKYcz1HloBKg" name="" type="_LHdog3rlEeSKYcz1HloBKg" association="_LHePqnrlEeSKYcz1HloBKg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LHePrHrlEeSKYcz1HloBKg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LHePrXrlEeSKYcz1HloBKg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LHePrnrlEeSKYcz1HloBKg" visibility="private" memberEnd="_LHdok3rlEeSKYcz1HloBKg _LHePr3rlEeSKYcz1HloBKg">
+    <ownedEnd xmi:id="_LHePr3rlEeSKYcz1HloBKg" name="" type="_LHdog3rlEeSKYcz1HloBKg" association="_LHePrnrlEeSKYcz1HloBKg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LHePsHrlEeSKYcz1HloBKg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LHePsXrlEeSKYcz1HloBKg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LHePsnrlEeSKYcz1HloBKg" memberEnd="_LHdon3rlEeSKYcz1HloBKg _LHePs3rlEeSKYcz1HloBKg">
+    <ownedEnd xmi:id="_LHePs3rlEeSKYcz1HloBKg" name="" type="_LHdonnrlEeSKYcz1HloBKg" association="_LHePsnrlEeSKYcz1HloBKg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LHePtHrlEeSKYcz1HloBKg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LHePtXrlEeSKYcz1HloBKg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LHePtnrlEeSKYcz1HloBKg" memberEnd="_LHdoo3rlEeSKYcz1HloBKg _LHePt3rlEeSKYcz1HloBKg">
+    <ownedEnd xmi:id="_LHePt3rlEeSKYcz1HloBKg" name="" type="_LHdonnrlEeSKYcz1HloBKg" association="_LHePtnrlEeSKYcz1HloBKg">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LHePuHrlEeSKYcz1HloBKg" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LHePuXrlEeSKYcz1HloBKg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>

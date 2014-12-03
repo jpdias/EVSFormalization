@@ -1,0 +1,14 @@
+class Candidate
+instance variables
+	public name: seq of char;
+operations
+--Constructor-Create a new Candidate
+	public Candidate: seq of char ==> Candidate
+	Candidate(n) == (name := n; return self)
+	pre name <> []
+	post name = n
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end Candidate

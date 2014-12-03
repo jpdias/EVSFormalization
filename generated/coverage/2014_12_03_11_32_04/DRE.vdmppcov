@@ -1,0 +1,28 @@
+class DRE
+types
+	private vote= map Voter to Candidate;
+instance variables
+	private Code: nat1 :=9999;
+	private Memory: seq of vote:=[];
+	private log: seq of RTAL :=[];
+	private logEntry: RTAL;
+	private CurrentPBE: PBE;
+	--inv Ballot;
+operations
+	public DRE: PBE ==> DRE
+	DRE(pbe) == (CurrentPBE := pbe;
+							logEntry := new RTAL("Election Started");
+							log := log ^ [logEntry];
+							return self)
+	pre 
+		pbe.ballot <> {}
+		and pbe.voters <> {}
+		and pbe.code = Code
+	post 
+		self.CurrentPBE.ballot = pbe.ballot
+		and self.CurrentPBE.voters = pbe.voters;
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end DRE

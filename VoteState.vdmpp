@@ -1,0 +1,29 @@
+class VoteState
+types
+	public STATE = <STOP> | <INIT> | <CONFIRM> | <DONE>;
+instance variables
+	public currentState: STATE := <STOP>;
+operations
+	public toConfirm: () ==> ()
+	toConfirm() == currentState := <CONFIRM>
+	pre currentState = <INIT>
+	post currentState = <CONFIRM>;
+	
+	public toInit: () ==> ()
+	toInit() == currentState := <INIT>
+	pre currentState = <CONFIRM>
+	post currentState = <INIT>;
+	
+	public toDone: () ==> ()
+	toDone() == currentState := <DONE>
+	pre currentState = <CONFIRM>
+	post currentState = <DONE>;
+	
+	public toStop: () ==> ()
+	toStop() == currentState := <STOP>
+	post currentState = <STOP>;
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end VoteState
