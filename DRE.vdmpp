@@ -3,17 +3,18 @@ instance variables
 	private code: nat1 :=9999;
 	private memory: map Voter to Candidate := {|->} ;
 	private log: seq of RTAL :=[];
-	private logEntry: RTAL;
 	private CurrentPBE: PBE;
 	private StateMachine: VoteState := new VoteState();
-	private CurrentChoice: Candidate; 
-	private CurrentVoter: Voter;
+	private CurrentChoice: Candidate := new Candidate(); 
+	private CurrentVoter: Voter := new Voter();
 operations
 -- Constructor
-	public DRE: PBE ==> DRE
-	DRE(pbe) == (CurrentPBE := pbe;
+	public DRE: PBE ==> DRE 
+	DRE(pbe) == (
+							dcl logEntry: RTAL;
+							CurrentPBE := pbe;
 							StateMachine.toStop();
-							logEntry := new RTAL("Election Started");
+						 	logEntry := new RTAL("Election Started");
 							log := log ^ [logEntry];
 							return self)
 	pre 
@@ -39,6 +40,10 @@ operations
 	
 	public StartVote: Voter ==> ()
 	StartVote(v) == (
+			dcl logEntry: RTAL;
+			
+			logEntry := new RTAL("Started voting: " ^ v.name);
+			log := log ^ [logEntry];
 			StateMachine.toInit();
 			CurrentVoter := v;
 			--Memory := Memory munion {v|->c};
@@ -51,6 +56,10 @@ operations
 
 	public Vote: Candidate ==> ()
 	Vote(c) == (
+			dcl logEntry: RTAL;
+			
+			logEntry := new RTAL(CurrentVoter.name ^ "voted in " ^ c.name);
+			log := log ^ [logEntry];
 			StateMachine.toConfirm();
 			CurrentChoice := c
 	)
@@ -65,17 +74,31 @@ operations
 	public ConfirmVote: bool ==>()
 	ConfirmVote(confirm) == (
 			if(confirm)
-			then(StateMachine.toDone();
-						memory:= memory munion {CurrentVoter|->CurrentChoice};
-						StateMachine.toStop()
-					 )
-			else(StateMachine.toInit();)
-	)
-	pre StateMachine.currentState=<CONFIRM>
-	post StateMachine.currentState=<STOP> or StateMachine.currentState=<INIT>;
+			then(
+					dcl logEntry: RTAL;
+					StateMachine.toDone();
 
-functions
--- TODO Define functiones here
-traces
--- TODO Define Combinatorial Test Traces here
+					logEntry := new RTAL("Confirmed:" ^ CurrentVoter.name ^ "has voted in " ^ CurrentChoice.name);
+					log := log ^ [logEntry];
+					memory:= memory munion {CurrentVoter|->CurrentChoice};
+					CurrentChoice := new Candidate();
+					CurrentVoter := new Voter();
+					StateMachine.toStop()
+					)
+			else(
+					dcl logEntry: RTAL;
+					logEntry := new RTAL("Canceled:" ^ CurrentVoter.name ^ "has canceled the vote in " ^ CurrentChoice.name);
+					log := log ^ [logEntry];
+					CurrentChoice := new Candidate();
+					StateMachine.toInit();
+					)
+	)
+	pre StateMachine.currentState=<CONFIRM> 
+			and CurrentVoter.name <> []
+			and CurrentChoice.name <> []
+	post (StateMachine.currentState=<STOP>
+			 and card dom memory = (card dom memory~ )+1)
+			 or (
+			 StateMachine.currentState=<INIT>)
+			 and card dom memory = card dom memory~;
 end DRE
