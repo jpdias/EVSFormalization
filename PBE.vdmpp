@@ -2,6 +2,7 @@ class PBE
 instance variables
 	public ballot: set of Candidate := {};
 	public voters: set of Voter := {};
+	public previousVoters:  set of Voter :={};
 	public static code: nat1 :=9999;
 operations
 --Add new Candidate to PBE ballot set
@@ -17,4 +18,19 @@ operations
 		and v.code > 1000 
 		and v.code < 9999
 	post v in set voters;
+	
+--Voter finished
+	public voteAct: Voter ==> ()
+	voteAct(v) == (
+									voters := remove[Voter](v,voters);
+									previousVoters := previousVoters union {v}
+								)
+	pre v in set voters
+	post v in set previousVoters
+			 and v not in set voters
+			 and card voters = card voters~-1
+			 and card previousVoters = card previousVoters~+1;
+functions
+    public remove[@T](e: @T, s: set of @T) res: set of @T ==
+    	{x | x in set s & x <> e};
 end PBE

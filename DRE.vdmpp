@@ -1,8 +1,8 @@
 class DRE
 instance variables
 	private code: nat1 :=9999;
-	private memory: map Voter to Candidate := {|->} ;
-	private log: seq of RTAL :=[];
+	private memory: map Candidate to nat := {|->} ;
+	private log: seq of RTAL := [];
 	private CurrentPBE: PBE;
 	private StateMachine: VoteState := new VoteState();
 	private CurrentChoice: Candidate := new Candidate(); 
@@ -16,6 +16,10 @@ operations
 							StateMachine.toStop();
 						 	logEntry := new RTAL("Election Started");
 							log := log ^ [logEntry];
+							for all cand in set CurrentPBE.ballot do
+				       (
+				       	memory:=memory++{cand|->0};
+				       );
 							return self)
 	pre 
 		pbe.ballot <> {}
@@ -24,41 +28,30 @@ operations
 	post 
 		self.CurrentPBE.ballot = pbe.ballot
 		and self.CurrentPBE.voters = pbe.voters;
-		
---Register Votes to Memory
-	public RegisterVote: Voter * Candidate ==> ()
-	RegisterVote(v,c) == memory := memory munion {v|->c}
-	pre c.name <> []
-		and v.code>=1000
-		and v.code<=9999
-		and v.name <> []
-	post memory = {v|->c} ++ memory~;
-
---Get Results
-
---Voting sequence state machine
 	
+	public getResult:() ==> map Candidate to nat
+	getResult()== return memory;
+	
+--Voting sequence state machine
 	public StartVote: Voter ==> ()
 	StartVote(v) == (
 			dcl logEntry: RTAL;
-			
 			logEntry := new RTAL("Started voting: " ^ v.name);
 			log := log ^ [logEntry];
 			StateMachine.toInit();
 			CurrentVoter := v;
-			--Memory := Memory munion {v|->c};
 	)
 	pre StateMachine.currentState=<STOP>
+			and card CurrentPBE.voters <> 0
 			and v in set CurrentPBE.voters
-			and v not in set dom memory
+			and v not in set CurrentPBE.previousVoters
 	post StateMachine.currentState=<INIT>
 			 and v = CurrentVoter;
 
 	public Vote: Candidate ==> ()
 	Vote(c) == (
 			dcl logEntry: RTAL;
-			
-			logEntry := new RTAL(CurrentVoter.name ^ "voted in " ^ c.name);
+			logEntry := new RTAL(CurrentVoter.name ^ " has voted");
 			log := log ^ [logEntry];
 			StateMachine.toConfirm();
 			CurrentChoice := c
@@ -76,20 +69,19 @@ operations
 			if(confirm)
 			then(
 					dcl logEntry: RTAL;
+					dcl currentCount: nat;
 					StateMachine.toDone();
-
-					logEntry := new RTAL("Confirmed:" ^ CurrentVoter.name ^ "has voted in " ^ CurrentChoice.name);
+					logEntry := new RTAL("Confirmed: " ^ CurrentVoter.name ^ " has voted");
 					log := log ^ [logEntry];
-					memory:= memory munion {CurrentVoter|->CurrentChoice};
-					CurrentChoice := new Candidate();
-					CurrentVoter := new Voter();
+					currentCount:=memory(CurrentChoice)+1;
+					memory:= memory ++ {CurrentChoice|->currentCount};
+					CurrentPBE.voteAct(CurrentVoter);	
 					StateMachine.toStop()
 					)
 			else(
 					dcl logEntry: RTAL;
-					logEntry := new RTAL("Canceled:" ^ CurrentVoter.name ^ "has canceled the vote in " ^ CurrentChoice.name);
+					logEntry := new RTAL("Canceled: " ^ CurrentVoter.name ^ " has canceled the vote");
 					log := log ^ [logEntry];
-					CurrentChoice := new Candidate();
 					StateMachine.toInit();
 					)
 	)
@@ -97,8 +89,10 @@ operations
 			and CurrentVoter.name <> []
 			and CurrentChoice.name <> []
 	post (StateMachine.currentState=<STOP>
-			 and card dom memory = (card dom memory~ )+1)
+			 and CurrentVoter in set CurrentPBE.previousVoters
+			 and CurrentVoter not in set CurrentPBE.voters
+			 )
 			 or (
-			 StateMachine.currentState=<INIT>)
-			 and card dom memory = card dom memory~;
+			 StateMachine.currentState=<INIT>
+			 and CurrentVoter in set CurrentPBE.voters);
 end DRE

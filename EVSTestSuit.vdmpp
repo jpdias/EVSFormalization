@@ -1,0 +1,79 @@
+class EVSTestSuit
+
+instance variables
+	voteTable: PBE := new PBE();
+	voterOne: Voter := new Voter("Joaquim",1001);
+	voterTwo: Voter :=  new Voter("João",1002);
+	voterThree: Voter:= new Voter("Correia",1003);
+	voterFour: Voter:= new Voter("Rui",1004);
+	candidateOne: Candidate:= new Candidate("PS");
+	candidateTwo: Candidate:= new Candidate("PSD");
+	candidateThree: Candidate:= new Candidate("CDS");
+	candidateFour: Candidate:= new Candidate("Livre");
+	VotingProcess: DRE := new DRE();
+operations
+
+private assertTrue: bool ==> ()
+	assertTrue(cond) == return
+	pre cond;
+
+private testVoting: () ==> ()
+testVoting() ==
+(
+	voteTable.addVoter(voterOne);
+	voteTable.addVoter(voterTwo);
+	voteTable.addVoter(voterThree);
+	voteTable.addVoter(voterFour);
+	assertTrue(card voteTable.voters = 4);
+	voteTable.addToBallot(candidateOne);
+	voteTable.addToBallot(candidateTwo);
+	voteTable.addToBallot(candidateThree);
+	voteTable.addToBallot(candidateFour);
+	assertTrue(card voteTable.ballot = 4);
+	VotingProcess:= new DRE(voteTable);
+	VotingProcess.StartVote(voterOne);
+	VotingProcess.Vote(candidateOne);
+	VotingProcess.ConfirmVote(true);
+	assertTrue(card voteTable.voters = 3);
+	assertTrue(card voteTable.previousVoters = 1);
+	VotingProcess.StartVote(voterTwo);
+	VotingProcess.Vote(candidateOne);
+	VotingProcess.ConfirmVote(true);
+	assertTrue(VotingProcess.getResult()(candidateOne)=2);
+	assertTrue(card voteTable.voters = 2);
+	assertTrue(card voteTable.previousVoters = 2);
+);
+
+private testReChoiceVoting: () ==> ()
+testReChoiceVoting() ==
+(
+	voteTable.addVoter(voterOne);
+	voteTable.addVoter(voterTwo);
+	voteTable.addVoter(voterThree);
+	voteTable.addVoter(voterFour);
+	assertTrue(card voteTable.voters = 4);
+	voteTable.addToBallot(candidateOne);
+	voteTable.addToBallot(candidateTwo);
+	voteTable.addToBallot(candidateThree);
+	voteTable.addToBallot(candidateFour);
+	assertTrue(card voteTable.ballot = 4);
+	VotingProcess:= new DRE(voteTable);
+	VotingProcess.StartVote(voterOne);
+	VotingProcess.Vote(candidateOne);
+	VotingProcess.ConfirmVote(false);
+	assertTrue(card voteTable.voters = 4);
+	assertTrue(card voteTable.previousVoters = 0);
+	VotingProcess.Vote(candidateTwo);
+	VotingProcess.ConfirmVote(true);
+	assertTrue(VotingProcess.getResult()(candidateTwo)=1);
+	assertTrue(card voteTable.voters = 3);
+	assertTrue(card voteTable.previousVoters = 1);
+);
+
+public static main: () ==> ()
+main() ==(
+	new EVSTestSuit().testVoting();
+	new EVSTestSuit().testReChoiceVoting();
+);
+
+end EVSTestSuit
