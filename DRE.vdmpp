@@ -11,7 +11,6 @@ operations
 -- Constructor
 	public DRE: PBE ==> DRE 
 	DRE(pbe) == (
-						
 							CurrentPBE := pbe;
 							StateMachine.toStop();
 							for all cand in set CurrentPBE.ballot do
@@ -73,9 +72,9 @@ operations
 					then(
 						StateMachine.toEnd();
 						--AUDIT
-						for all i in set dom log.memory 
+						for all i in set dom  RTALMemory`memory 
 						do (
-							temp := log.memory(i);
+							temp :=  RTALMemory`memory(i);
 							temp.Do(temp)
 						);
 					)

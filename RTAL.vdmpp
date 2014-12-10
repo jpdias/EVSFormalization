@@ -1,12 +1,18 @@
-class RTAL
+class RTALMemory
 instance variables
 	public static record: map Candidate to nat := {|->};
-	protected static voters: set of Voter := {};
+	public static voters: set of Voter := {};
 	public static memory: map nat to RTAL := {|->};
 	public static state: VoteState :=  new VoteState();
 	public static iteration: nat := 0;
-	protected static currentV : Voter := new Voter();
-	protected static currentC : Candidate := new Candidate();
+	public static currentV: Voter := new Voter();
+	public static currentC: Candidate := new Candidate();	
+end RTALMemory
+
+class RTAL
+instance variables
+	--inv currentC in set dom record;
+	--inv currentV in set voters;
 operations
 	public Do : RTAL ==> ()
 	Do(temp) == is subclass responsibility;
@@ -15,17 +21,117 @@ end RTAL
 class RTALBuild is subclass of RTAL
 operations
 	public RTALBuild: map Candidate to nat * set of Voter ==> RTALBuild
-	RTALBuild(rec,vots) == (record := rec; 
-										 voters := vots;
+	RTALBuild(rec,vots) == (
+										 RTALMemory`record := rec; 
+										 RTALMemory`voters := vots;
 									   return self)
 	pre card dom rec <> 0 
 			and vots <> {}
-	post record = rec
-			and voters = vots;
+	post  RTALMemory`record = rec
+			and  RTALMemory`voters = vots;
 			
 	public Do: RTAL ==>()
-	Do(rt) == (iteration:= iteration+1;
-						 memory := memory ++ {iteration |-> rt})
-	pre iteration >= 0
-	post card dom memory =  card dom memory~+1;
+	Do(rt) == ( RTALMemory`iteration:=  RTALMemory`iteration+1;
+						  RTALMemory`memory :=  RTALMemory`memory ++ { RTALMemory`iteration |-> rt})
+	pre  RTALMemory`iteration >= 0;
+	--post card dom  RTALMemory`memory =  card dom  RTALMemory`memory~+1;
 end RTALBuild
+
+class RTALStart is subclass of RTAL
+instance variables
+	voter : Voter;
+operations
+	public RTALStart: Voter ==> RTALStart 
+	RTALStart(v) == (
+							voter := v;
+							return self)
+	pre v in set  RTALMemory`voters
+	post voter = v;
+	
+	public Do : RTAL ==> ()
+	Do(temp) == make();
+	
+	public make: () ==> () 
+	make() == (
+					 RTALMemory`currentV:= voter;
+					 RTALMemory`state.toInit();
+					)
+	pre voter.name <> [] and  RTALMemory`state.currentState = <STOP>
+	post  RTALMemory`currentV = voter and  RTALMemory`state.currentState = <INIT>;
+end RTALStart
+
+class RTALVote is subclass of RTAL
+instance variables
+	candidate : Candidate;
+operations
+	public RTALVote: Candidate ==> RTALVote 
+	RTALVote(c) == (
+							candidate := c;
+							return self)
+	pre c in set dom  RTALMemory`record
+	post candidate in set dom  RTALMemory`record;
+	
+	public Do : RTAL ==> ()
+	Do(temp) == make();
+	
+	public make: () ==> () 
+	make() == (
+				   RTALMemory`currentC := candidate;
+					 RTALMemory`state.toConfirm();
+					)
+	pre  RTALMemory`state.currentState = <INIT>
+	post  RTALMemory`currentC = candidate and  RTALMemory`state.currentState = <CONFIRM>;
+end RTALVote
+
+
+class RTALConfirm is subclass of RTAL
+instance variables
+	confirm : bool := false;
+operations
+	public RTALConfirm: bool ==> RTALConfirm 
+	RTALConfirm(t) == (
+							confirm := t;
+							return self)
+	pre (t = true or t=false)
+	post confirm = t;
+	
+	public Do : RTAL ==> ()
+	Do(temp) == make();
+	
+	public make: () ==> () 
+	make() == (
+					if(confirm)
+					then(
+						dcl currentCount: nat;
+						currentCount:= RTALMemory`record( RTALMemory`currentC)+1;
+						 RTALMemory`record:=  RTALMemory`record ++ { RTALMemory`currentC|->currentCount};
+						if(card  RTALMemory`voters >0)
+						then( RTALMemory`voters:=remove[Voter]( RTALMemory`currentV, RTALMemory`voters));
+						if(card  RTALMemory`voters<=0)
+						then(
+							 RTALMemory`state.toEnd();
+						)
+						else(
+							 RTALMemory`state.toStop();
+						)
+					)
+					else
+						 RTALMemory`state.toInit();
+					)
+		pre  RTALMemory`state.currentState=<CONFIRM> 
+			and  RTALMemory`currentV.name <> []
+		post ( RTALMemory`state.currentState=<STOP>
+
+			 )
+			 or (
+			  RTALMemory`state.currentState=<INIT>
+			)
+			 or (
+			  RTALMemory`state.currentState=<END>
+			
+			 );
+functions
+    public remove[@T](e: @T, s: set of @T) res: set of @T ==
+    	{x | x in set s & x <> e};
+end RTALConfirm
+

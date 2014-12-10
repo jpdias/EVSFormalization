@@ -97,13 +97,13 @@ testEnd() ==
 	VotingProcess.Vote(candidateTwo);
 	VotingProcess.ConfirmVote(true);
 	assertTrue(VotingProcess.StateMachine.currentState = <END>);
-	assertTrue(VotingProcess.memory = VotingProcess.log.record);
+	assertTrue(VotingProcess.memory =  RTALMemory`record);
 );
 
 public static main: () ==> ()
 main() ==(
-	new EVSTestSuit().testVoting();
-	new EVSTestSuit().testReChoiceVoting();
+	--new EVSTestSuit().testVoting();
+	--new EVSTestSuit().testReChoiceVoting();
 	new EVSTestSuit().testEnd();
 );
 
