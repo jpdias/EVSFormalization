@@ -1,6 +1,6 @@
 class VoteState
 types
-	public STATE = <STOP> | <INIT> | <CONFIRM> | <DONE>;
+	public STATE = <STOP> | <INIT> | <CONFIRM> | <END>;
 instance variables
 	public currentState: STATE := <STOP>;
 operations
@@ -14,16 +14,12 @@ operations
 	pre currentState = <STOP> or  currentState = <CONFIRM>
 	post currentState = <INIT>;
 	
-	public toDone: () ==> ()
-	toDone() == currentState := <DONE>
+	public toEnd: () ==> ()
+	toEnd() == currentState := <END>
 	pre currentState = <CONFIRM>
-	post currentState = <DONE>;
+	post currentState = <END>;
 	
 	public toStop: () ==> ()
 	toStop() == currentState := <STOP>
 	post currentState = <STOP>;
-functions
--- TODO Define functiones here
-traces
--- TODO Define Combinatorial Test Traces here
 end VoteState

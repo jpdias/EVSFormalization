@@ -4,6 +4,8 @@ instance variables
 	public voters: set of Voter := {};
 	public previousVoters:  set of Voter :={};
 	public static code: nat1 :=9999;
+	--inv cannot exists the same vouter in previousVoters and vice-versa
+	inv card (voters inter previousVoters) = 0;
 operations
 --Add new Candidate to PBE ballot set
 	public addToBallot: Candidate ==> ()

@@ -4,7 +4,7 @@ instance variables
 	private memory: map Candidate to nat := {|->} ;
 	private log: seq of RTAL := [];
 	private CurrentPBE: PBE;
-	private StateMachine: VoteState := new VoteState();
+	public StateMachine: VoteState := new VoteState();
 	private CurrentChoice: Candidate := new Candidate(); 
 	private CurrentVoter: Voter := new Voter();
 operations
@@ -70,13 +70,18 @@ operations
 			then(
 					dcl logEntry: RTAL;
 					dcl currentCount: nat;
-					StateMachine.toDone();
 					logEntry := new RTAL("Confirmed: " ^ CurrentVoter.name ^ " has voted");
 					log := log ^ [logEntry];
 					currentCount:=memory(CurrentChoice)+1;
 					memory:= memory ++ {CurrentChoice|->currentCount};
 					CurrentPBE.voteAct(CurrentVoter);	
-					StateMachine.toStop()
+					if(card CurrentPBE.voters = 0)
+					then(
+						StateMachine.toEnd();
+					)
+					else(
+						StateMachine.toStop();
+					)
 					)
 			else(
 					dcl logEntry: RTAL;
@@ -94,5 +99,10 @@ operations
 			 )
 			 or (
 			 StateMachine.currentState=<INIT>
-			 and CurrentVoter in set CurrentPBE.voters);
+			 and CurrentVoter in set CurrentPBE.voters)
+			 or (
+			 StateMachine.currentState=<END>
+			 and CurrentVoter in set CurrentPBE.previousVoters
+			 and CurrentVoter not in set CurrentPBE.voters
+			 );
 end DRE

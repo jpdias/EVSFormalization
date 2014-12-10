@@ -70,10 +70,40 @@ testReChoiceVoting() ==
 	assertTrue(card voteTable.previousVoters = 1);
 );
 
+private testEnd: () ==> ()
+testEnd() ==
+(
+	voteTable.addVoter(voterOne);
+	voteTable.addVoter(voterTwo);
+	voteTable.addVoter(voterThree);
+	voteTable.addVoter(voterFour);
+	assertTrue(card voteTable.voters = 4);
+	voteTable.addToBallot(candidateOne);
+	voteTable.addToBallot(candidateTwo);
+	voteTable.addToBallot(candidateThree);
+	voteTable.addToBallot(candidateFour);
+	assertTrue(card voteTable.ballot = 4);
+	VotingProcess:= new DRE(voteTable);
+	VotingProcess.StartVote(voterOne);
+	VotingProcess.Vote(candidateOne);
+	VotingProcess.ConfirmVote(true);
+	VotingProcess.StartVote(voterTwo);
+	VotingProcess.Vote(candidateOne);
+	VotingProcess.ConfirmVote(true);
+	VotingProcess.StartVote(voterThree);
+	VotingProcess.Vote(candidateTwo);
+	VotingProcess.ConfirmVote(true);
+	VotingProcess.StartVote(voterFour);
+	VotingProcess.Vote(candidateTwo);
+	VotingProcess.ConfirmVote(true);
+	assertTrue(VotingProcess.StateMachine.currentState = <END>);
+);
+
 public static main: () ==> ()
 main() ==(
 	new EVSTestSuit().testVoting();
 	new EVSTestSuit().testReChoiceVoting();
+	new EVSTestSuit().testEnd();
 );
 
 end EVSTestSuit
