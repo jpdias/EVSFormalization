@@ -1,0 +1,22 @@
+class RTALStart is subclass of RTAL
+instance variables
+	voter : Voter := new Voter();
+operations
+	public RTALStart: Voter ==> RTALStart 
+	RTALStart(v) == (
+							voter := v;
+							return self)
+	pre v.name <> []
+	post voter = v;
+	
+	public Do : () ==> ()
+	Do() == make();
+	
+	public make: () ==> () 
+	make() == (
+					currentV :=voter;
+					state.toInit();
+					)
+	pre voter.name <> [] and state.currentState = <STOP>
+	post currentV = voter and state.currentState = <INIT>;
+end RTALStart

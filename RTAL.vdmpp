@@ -1,13 +1,30 @@
 class RTAL
 instance variables
-	public entry : seq of char;
+	public record: map Candidate to nat := {|->};
+	protected voters: set of Voter := {};
+	public memory: map nat to RTAL := {|->};
+	public  state: VoteState :=  new VoteState();
 	public static iteration: nat := 0;
+	protected currentV : Voter := new Voter();
+	protected currentC : Candidate := new Candidate();
 operations
 --Constructor-Create a new string entry Log
-	public RTAL: seq of char ==> RTAL
-	RTAL(message) == (entry := message; 
-										iteration:=iteration+1;
-										return self)
-	pre message <> []
-	post entry = message
+	public RTAL: map Candidate to nat * set of Voter ==> RTAL
+	RTAL(rec,vots) == (record := rec; 
+										 voters := vots;
+									   return self)
+	pre card dom rec <> 0 
+			and vots <> {}
+	post record = rec
+			and voters = vots;
+			
+	public addEntry: RTAL ==>()
+	addEntry(rt) == (iteration:= iteration+1;
+									 memory := memory munion {iteration |-> rt})
+	pre iteration >= 0
+	post memory = memory~ munion {iteration |-> rt};
+
+	public Do : () ==> ()
+	Do() == is subclass responsibility;
+	
 end RTAL

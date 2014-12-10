@@ -1,8 +1,8 @@
 class DRE
 instance variables
 	private code: nat1 :=9999;
-	private memory: map Candidate to nat := {|->} ;
-	private log: seq of RTAL := [];
+	public memory: map Candidate to nat := {|->} ;
+	private log: RTAL := new RTAL();
 	private CurrentPBE: PBE;
 	public StateMachine: VoteState := new VoteState();
 	private CurrentChoice: Candidate := new Candidate(); 
@@ -11,15 +11,14 @@ operations
 -- Constructor
 	public DRE: PBE ==> DRE 
 	DRE(pbe) == (
-							dcl logEntry: RTAL;
+						
 							CurrentPBE := pbe;
 							StateMachine.toStop();
-						 	logEntry := new RTAL("Election Started");
-							log := log ^ [logEntry];
 							for all cand in set CurrentPBE.ballot do
-				       (
+				      (
 				       	memory:=memory++{cand|->0};
-				       );
+				      );
+				      log := new RTAL(memory, CurrentPBE.voters);
 							return self)
 	pre 
 		pbe.ballot <> {}
@@ -35,9 +34,7 @@ operations
 --Voting sequence state machine
 	public StartVote: Voter ==> ()
 	StartVote(v) == (
-			dcl logEntry: RTAL;
-			logEntry := new RTAL("Started voting: " ^ v.name);
-			log := log ^ [logEntry];
+			log.addEntry(new RTALStart(v));
 			StateMachine.toInit();
 			CurrentVoter := v;
 	)
@@ -50,9 +47,7 @@ operations
 
 	public Vote: Candidate ==> ()
 	Vote(c) == (
-			dcl logEntry: RTAL;
-			logEntry := new RTAL(CurrentVoter.name ^ " has voted");
-			log := log ^ [logEntry];
+			log.addEntry(new RTALVote(c));
 			StateMachine.toConfirm();
 			CurrentChoice := c
 	)
@@ -66,27 +61,28 @@ operations
 	
 	public ConfirmVote: bool ==>()
 	ConfirmVote(confirm) == (
+		log.addEntry(new RTALConfirm(confirm));
 			if(confirm)
 			then(
-					dcl logEntry: RTAL;
 					dcl currentCount: nat;
-					logEntry := new RTAL("Confirmed: " ^ CurrentVoter.name ^ " has voted");
-					log := log ^ [logEntry];
+					dcl temp : RTAL;
 					currentCount:=memory(CurrentChoice)+1;
 					memory:= memory ++ {CurrentChoice|->currentCount};
 					CurrentPBE.voteAct(CurrentVoter);	
 					if(card CurrentPBE.voters = 0)
 					then(
 						StateMachine.toEnd();
+						--AUDIT
+						for all i in set dom log.memory 
+						do (
+						temp := log.memory(i);
+						temp.Do());
 					)
 					else(
 						StateMachine.toStop();
 					)
 					)
 			else(
-					dcl logEntry: RTAL;
-					logEntry := new RTAL("Canceled: " ^ CurrentVoter.name ^ " has canceled the vote");
-					log := log ^ [logEntry];
 					StateMachine.toInit();
 					)
 	)

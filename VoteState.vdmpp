@@ -1,6 +1,6 @@
 class VoteState
 types
-	public STATE = <STOP> | <INIT> | <CONFIRM> | <END>;
+	public STATE = <INIT> | <CONFIRM> | <STOP> | <END>;
 instance variables
 	public currentState: STATE := <STOP>;
 operations
