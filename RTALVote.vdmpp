@@ -9,12 +9,11 @@ operations
 	pre c.name <> []
 	post candidate = c;
 	
-	public Do : () ==> ()
-	Do() == make();
+	public Do : RTAL ==> ()
+	Do(temp) == make();
 	
 	public make: () ==> () 
 	make() == (
-				
 					currentC :=candidate;
 					state.toConfirm();
 					)

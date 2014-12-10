@@ -11,7 +11,6 @@ instance variables
 	candidateThree: Candidate:= new Candidate("CDS");
 	candidateFour: Candidate:= new Candidate("Livre");
 	VotingProcess: DRE := new DRE();
-	Log: RTAL := new RTAL(VotingProcess.memory, voteTable.voters);
 operations
 
 private assertTrue: bool ==> ()
@@ -98,7 +97,7 @@ testEnd() ==
 	VotingProcess.Vote(candidateTwo);
 	VotingProcess.ConfirmVote(true);
 	assertTrue(VotingProcess.StateMachine.currentState = <END>);
-	assertTrue(VotingProcess.memory = Log.record);
+	assertTrue(VotingProcess.memory = VotingProcess.log.record);
 );
 
 public static main: () ==> ()

@@ -9,8 +9,8 @@ operations
 	pre v.name <> []
 	post voter = v;
 	
-	public Do : () ==> ()
-	Do() == make();
+	public Do : RTAL ==> ()
+	Do(temp) == make();
 	
 	public make: () ==> () 
 	make() == (

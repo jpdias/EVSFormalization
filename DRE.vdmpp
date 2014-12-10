@@ -2,7 +2,7 @@ class DRE
 instance variables
 	private code: nat1 :=9999;
 	public memory: map Candidate to nat := {|->} ;
-	private log: RTAL := new RTAL();
+	public log: RTAL := new RTALBuild();
 	private CurrentPBE: PBE;
 	public StateMachine: VoteState := new VoteState();
 	private CurrentChoice: Candidate := new Candidate(); 
@@ -18,7 +18,7 @@ operations
 				      (
 				       	memory:=memory++{cand|->0};
 				      );
-				      log := new RTAL(memory, CurrentPBE.voters);
+				      log := new RTALBuild(memory, CurrentPBE.voters);
 							return self)
 	pre 
 		pbe.ballot <> {}
@@ -34,7 +34,7 @@ operations
 --Voting sequence state machine
 	public StartVote: Voter ==> ()
 	StartVote(v) == (
-			log.addEntry(new RTALStart(v));
+			log.Do(new RTALStart(v));
 			StateMachine.toInit();
 			CurrentVoter := v;
 	)
@@ -47,7 +47,7 @@ operations
 
 	public Vote: Candidate ==> ()
 	Vote(c) == (
-			log.addEntry(new RTALVote(c));
+			log.Do(new RTALVote(c));
 			StateMachine.toConfirm();
 			CurrentChoice := c
 	)
@@ -61,7 +61,7 @@ operations
 	
 	public ConfirmVote: bool ==>()
 	ConfirmVote(confirm) == (
-		log.addEntry(new RTALConfirm(confirm));
+		log.Do(new RTALConfirm(confirm));
 			if(confirm)
 			then(
 					dcl currentCount: nat;
@@ -69,14 +69,15 @@ operations
 					currentCount:=memory(CurrentChoice)+1;
 					memory:= memory ++ {CurrentChoice|->currentCount};
 					CurrentPBE.voteAct(CurrentVoter);	
-					if(card CurrentPBE.voters = 0)
+					if(CurrentPBE.voters = {})
 					then(
 						StateMachine.toEnd();
 						--AUDIT
 						for all i in set dom log.memory 
 						do (
-						temp := log.memory(i);
-						temp.Do());
+							temp := log.memory(i);
+							temp.Do(temp)
+						);
 					)
 					else(
 						StateMachine.toStop();

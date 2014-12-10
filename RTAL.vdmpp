@@ -1,16 +1,21 @@
 class RTAL
 instance variables
-	public record: map Candidate to nat := {|->};
-	protected voters: set of Voter := {};
-	public memory: map nat to RTAL := {|->};
-	public  state: VoteState :=  new VoteState();
+	public static record: map Candidate to nat := {|->};
+	protected static voters: set of Voter := {};
+	public static memory: map nat to RTAL := {|->};
+	public static state: VoteState :=  new VoteState();
 	public static iteration: nat := 0;
-	protected currentV : Voter := new Voter();
-	protected currentC : Candidate := new Candidate();
+	protected static currentV : Voter := new Voter();
+	protected static currentC : Candidate := new Candidate();
 operations
---Constructor-Create a new string entry Log
-	public RTAL: map Candidate to nat * set of Voter ==> RTAL
-	RTAL(rec,vots) == (record := rec; 
+	public Do : RTAL ==> ()
+	Do(temp) == is subclass responsibility;
+end RTAL
+
+class RTALBuild is subclass of RTAL
+operations
+	public RTALBuild: map Candidate to nat * set of Voter ==> RTALBuild
+	RTALBuild(rec,vots) == (record := rec; 
 										 voters := vots;
 									   return self)
 	pre card dom rec <> 0 
@@ -18,13 +23,9 @@ operations
 	post record = rec
 			and voters = vots;
 			
-	public addEntry: RTAL ==>()
-	addEntry(rt) == (iteration:= iteration+1;
-									 memory := memory munion {iteration |-> rt})
+	public Do: RTAL ==>()
+	Do(rt) == (iteration:= iteration+1;
+						 memory := memory ++ {iteration |-> rt})
 	pre iteration >= 0
-	post memory = memory~ munion {iteration |-> rt};
-
-	public Do : () ==> ()
-	Do() == is subclass responsibility;
-	
-end RTAL
+	post card dom memory =  card dom memory~+1;
+end RTALBuild
