@@ -62,9 +62,9 @@ operations
 	------------------------------------------------------------------------------------
 	public ConfirmVote: bool ==>()
 	ConfirmVote(confirm) == (
+			log.add(new RTALConfirm(confirm,CurrentChoice));
 			if(confirm)
 			then(
-					log.add(new RTALConfirm(confirm,CurrentChoice));
 					memory(CurrentChoice):=memory(CurrentChoice)+1;
 					CurrentPBE.voteAct(CurrentVoter);	
 					if(CurrentPBE.voters = {})
