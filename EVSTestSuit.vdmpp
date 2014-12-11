@@ -20,6 +20,7 @@ private assertTrue: bool ==> ()
 private testVoting: () ==> ()
 testVoting() ==
 (
+	
 	voteTable.addVoter(voterOne);
 	voteTable.addVoter(voterTwo);
 	voteTable.addVoter(voterThree);
@@ -42,11 +43,18 @@ testVoting() ==
 	assertTrue(VotingProcess.getResult()(candidateOne)=2);
 	assertTrue(card voteTable.voters = 2);
 	assertTrue(card voteTable.previousVoters = 2);
+	
+	for entry in RTALMemory`memory 
+  do (
+   	entry.Do();
+  );
+  	
+  assertTrue(VotingProcess.memory = RTALMemory`record );
 );
 
 private testReChoiceVoting: () ==> ()
 testReChoiceVoting() ==
-(
+(	
 	voteTable.addVoter(voterOne);
 	voteTable.addVoter(voterTwo);
 	voteTable.addVoter(voterThree);
@@ -68,11 +76,18 @@ testReChoiceVoting() ==
 	assertTrue(VotingProcess.getResult()(candidateTwo)=1);
 	assertTrue(card voteTable.voters = 3);
 	assertTrue(card voteTable.previousVoters = 1);
+	
+	for entry in RTALMemory`memory 
+  do (
+   	entry.Do();
+  );
+  	
+  assertTrue(VotingProcess.memory = RTALMemory`record );
 );
 
 private testEnd: () ==> ()
 testEnd() ==
-(
+(	
 	voteTable.addVoter(voterOne);
 	voteTable.addVoter(voterTwo);
 	voteTable.addVoter(voterThree);
@@ -97,14 +112,24 @@ testEnd() ==
 	VotingProcess.Vote(candidateTwo);
 	VotingProcess.ConfirmVote(true);
 	assertTrue(VotingProcess.StateMachine.currentState = <END>);
-	assertTrue(VotingProcess.memory =  RTALMemory`record);
+	
+	--audit
+	for entry in RTALMemory`memory 
+  do (
+   	entry.Do();
+  );
+  	
+  assertTrue(VotingProcess.memory = RTALMemory`record );
 );
 
 public static main: () ==> ()
 main() ==(
-	--new EVSTestSuit().testVoting();
-	--new EVSTestSuit().testReChoiceVoting();
 	new EVSTestSuit().testEnd();
+	new EVSTestSuit().testVoting();
+	new EVSTestSuit().testReChoiceVoting();
+
+
+
 );
 
 end EVSTestSuit
