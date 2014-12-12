@@ -2,7 +2,7 @@ class DRE
 instance variables
 	private code: nat1 :=9999;
 	public memory: map Candidate to nat := {|->} ;
-	public log: RTALMemory;
+	public log: RTALMemory := new RTALMemory();
 	private CurrentPBE: PBE;
 	public StateMachine: VoteState := new VoteState();
 	private CurrentChoice: Candidate := new Candidate(); 
@@ -19,7 +19,7 @@ operations
 				      (
 								memory:=memory++{cand|->0};
 				      );
-				      log := new RTALMemory(memory);
+				      log.add(new RTALInitialize(memory));
 							return self)
 	pre 
 		pbe.ballot <> {}

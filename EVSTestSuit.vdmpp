@@ -20,7 +20,7 @@ private assertTrue: bool ==> ()
 private testVoting: () ==> ()
 testVoting() ==
 (
-	
+	dcl record: map Candidate to nat :={|->};
 	voteTable.addVoter(voterOne);
 	voteTable.addVoter(voterTwo);
 	voteTable.addVoter(voterThree);
@@ -46,15 +46,17 @@ testVoting() ==
 	
 	for entry in RTALMemory`memory 
   do (
-   	entry.Do();
+   	record:=entry.Do(record);
   );
-  	
-  assertTrue(VotingProcess.memory = RTALMemory`record );
+  assertTrue(VotingProcess.memory = record);
+  
 );
 
 private testReChoiceVoting: () ==> ()
 testReChoiceVoting() ==
 (	
+	dcl record: map Candidate to nat:={|->};
+	
 	voteTable.addVoter(voterOne);
 	voteTable.addVoter(voterTwo);
 	voteTable.addVoter(voterThree);
@@ -79,15 +81,16 @@ testReChoiceVoting() ==
 	
 	for entry in RTALMemory`memory 
   do (
-   	entry.Do();
+   	record:=entry.Do(record);
   );
   	
-  assertTrue(VotingProcess.memory = RTALMemory`record );
+  assertTrue(VotingProcess.memory = record);
 );
 
 private testEnd: () ==> ()
 testEnd() ==
 (	
+	dcl record: map Candidate to nat:={|->};
 	voteTable.addVoter(voterOne);
 	voteTable.addVoter(voterTwo);
 	voteTable.addVoter(voterThree);
@@ -116,20 +119,18 @@ testEnd() ==
 	--audit
 	for entry in RTALMemory`memory 
   do (
-   	entry.Do();
+   	record:=entry.Do(record);
   );
   	
-  assertTrue(VotingProcess.memory = RTALMemory`record );
+  assertTrue(VotingProcess.memory = record);
 );
 
 public static main: () ==> ()
 main() ==(
+	
 	new EVSTestSuit().testEnd();
 	new EVSTestSuit().testVoting();
 	new EVSTestSuit().testReChoiceVoting();
-
-
-
 );
 
 end EVSTestSuit
