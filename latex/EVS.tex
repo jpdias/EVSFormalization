@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[color]{vdmlisting}
+\usepackage[hidelinks]{hyperref} 
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{rotating}
+
+\begin{document}
+\title{\Huge\textbf{\textit{Electronic Voting System}}\linebreak
+\Large\textbf{\\Assignment 5 (T05)}\linebreak\linebreak\linebreak
+\includegraphics[width=8cm]{feup.pdf}\linebreak \linebreak
+\large{Mestrado Integrado em Engenharia Informática e Computação} \linebreak
+\large{Métodos Formais em Engenharia de \textit{Software}  \\ EIC0039-1S}\linebreak
+}
+\author{\\\\\\\\\\\\\\\\\\\
+João de Sá Balão Calisto Correia - 201208114 (ei12159@fe.up.pt)\\
+João Pedro Matos Teixeira Dias - 201106781 (ei11137@fe.up.pt)\\
+Eduardo José Valadar Martins  - 201104191 (ei11104@fe.up.pt)\\
+\\ Faculdade de Engenharia da Universidade do Porto \\ Rua Roberto Frias, s\/n, 4200-465 Porto, Portugal
+ \vspace{1cm}}
+%\date{Junho de 2007}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\section{Informal system description and list of requirements}
+\subsection{Informal system description}
+\subsection{List of requirements}
+\section{Visual UML Model}
+\subsection{Use case model}
+\subsection{State machine model}
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{state.png}
+	\caption{State Machine Diagram (Vote Process).}
+	\label{fig:PropProf}
+\end{figure}
+\subsection{Class model}
+\begin{figure}[!h]
+\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{uml.png}
+	\caption{Class Model Diagram.}
+	\label{fig:PropProf}
+\end{figure}
+\section{Formal VDM++ Model}\label{xpto}
+\subsection{Candidate}
+\input{specification/Candidate.vdmpp.tex}
+\subsection{Voter}
+\input{specification/Voter.vdmpp.tex}
+\subsection{PBE}
+\input{specification/PBE.vdmpp.tex}
+\subsection{VoteState}
+\input{specification/VoteState.vdmpp.tex}
+\subsection{DRE}
+\input{specification/DRE.vdmpp.tex}
+\subsection{RTAL}
+\input{specification/RTAL.vdmpp.tex}
+\section{Model Validation}
+\subsection{EVSTestSuit}
+\input{specification/EVSTestSuit.vdmpp.tex}
+\renewcommand{\refname}{\section{Bibliography}} % Using "Sources" as the title of the section
+\begin{thebibliography}{99}
+\bibitem{intro} 
+Pipattanasomporn M., Feroze H. and Rahman S., Multi-agent systems in a distributed smart grid: Design and implementation, 2009.
+\end{thebibliography}
+
+
+
+\end{document}

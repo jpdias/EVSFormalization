@@ -3,7 +3,7 @@ class EVSTestSuit
 instance variables
 	voteTable: PBE := new PBE();
 	voterOne: Voter := new Voter("Joaquim",1001);
-	voterTwo: Voter :=  new Voter("João",1002);
+	voterTwo: Voter :=  new Voter("Joao",1002);
 	voterThree: Voter:= new Voter("Correia",1003);
 	voterFour: Voter:= new Voter("Rui",1004);
 	candidateOne: Candidate:= new Candidate("PS");
@@ -21,6 +21,7 @@ private testVoting: () ==> ()
 testVoting() ==
 (
 	dcl record: map Candidate to nat :={|->};
+	
 	voteTable.addVoter(voterOne);
 	voteTable.addVoter(voterTwo);
 	voteTable.addVoter(voterThree);
@@ -48,7 +49,7 @@ testVoting() ==
   do (
    	record:=entry.Do(record);
   );
-  assertTrue(VotingProcess.memory = record);
+  assertTrue(VotingProcess.getResult() = record);
   
 );
 
@@ -84,7 +85,7 @@ testReChoiceVoting() ==
    	record:=entry.Do(record);
   );
   	
-  assertTrue(VotingProcess.memory = record);
+  assertTrue(VotingProcess.getResult() = record);
 );
 
 private testEnd: () ==> ()
@@ -122,12 +123,11 @@ testEnd() ==
    	record:=entry.Do(record);
   );
   	
-  assertTrue(VotingProcess.memory = record);
+  assertTrue(VotingProcess.getResult() = record);
 );
 
 public static main: () ==> ()
 main() ==(
-	
 	new EVSTestSuit().testEnd();
 	new EVSTestSuit().testVoting();
 	new EVSTestSuit().testReChoiceVoting();

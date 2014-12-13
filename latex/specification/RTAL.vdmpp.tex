@@ -1,0 +1,171 @@
+\begin{vdmpp}
+class RTALMemory
+instance variables
+  public static memory: seq of RTAL := [];
+operations
+ public add: RTAL ==> ()
+(*@
+\label{add:6}
+@*)
+ add(rt)==(
+  memory := memory ^ [rt]; 
+ )
+ post len memory = len memory~+1;
+end RTALMemory
+-----------------------------------------------------------------------
+(*@
+\label{RTALMemory:12}
+@*)
+class RTAL 
+instance variables
+operations
+ public Do : (map Candidate to nat) ==> (map Candidate to nat)
+ Do(record) == is subclass responsibility;
+end RTAL
+----------------------------------------------------------------------
+class RTALInitialize is subclass of RTAL
+instance variables
+ candidates : map Candidate to nat;
+operations
+ public RTALInitialize: map Candidate to nat ==> RTALInitialize 
+(*@
+\label{Do:24}
+@*)
+ RTALInitialize(temp) == (
+       candidates := temp;
+       return self)
+ pre card dom temp <> 0
+ post candidates = temp;
+ 
+ public Do :  (map Candidate to nat) ==> (map Candidate to nat)
+ Do(record) ==  (
+(*@
+\label{RTALStart:32}
+@*)
+(*@
+\label{RTALStart:32}
+@*)
+(*@
+\label{RTALInitialize:32}
+@*)
+  dcl temp : map Candidate to nat := record;
+  temp :=candidates;
+  return temp)
+ pre card dom candidates <> 0;
+ 
+end RTALInitialize
+
+(*@
+\label{Do:39}
+@*)
+(*@
+\label{Do:39}
+@*)
+----------------------------------------------------------------------
+
+class RTALStart is subclass of RTAL
+instance variables
+ voter : Voter;
+operations
+ public RTALStart: Voter ==> RTALStart 
+ RTALStart(v) == (
+       voter := v;
+       return self)
+(*@
+\label{RTALVote:49}
+@*)
+ pre v.name <> []
+ post voter = v;
+ 
+ public Do :  (map Candidate to nat) ==> (map Candidate to nat)
+ Do(record) ==  (return record;)
+ pre voter.name <> [];
+ 
+(*@
+\label{Do:56}
+@*)
+end RTALStart
+--------------------------------------------------------------
+class RTALVote is subclass of RTAL
+instance variables
+  candidate : Candidate;
+operations
+ public RTALVote: Candidate ==> RTALVote 
+ RTALVote(c) == (
+       candidate := c;
+       return self);
+(*@
+\label{RTALConfirm:66}
+@*)
+ 
+ public Do :  (map Candidate to nat) ==> (map Candidate to nat)
+ Do(record) == (return record;)
+ pre candidate.name <> [];
+end RTALVote
+----------------------------------------------------------------
+class RTALConfirm is subclass of RTAL
+(*@
+\label{Do:73}
+@*)
+instance variables 
+ confirm : bool := false;
+ candidate : Candidate;
+operations
+ public RTALConfirm: bool*Candidate ==> RTALConfirm 
+ RTALConfirm(t,c) == (
+       confirm := t;
+       candidate:= c;
+       return self)
+ post confirm = t;
+
+ public Do : (map Candidate to nat) ==> (map Candidate to nat)
+ Do(record) == (
+  dcl temp:map Candidate to nat := record;
+  if(confirm)
+  then(
+   temp(candidate):=temp(candidate)+1;
+   return temp;
+  )
+  else(
+   return temp;
+  );
+ )
+ pre (confirm = true or confirm = false)
+end RTALConfirm
+
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[Do:73]{Do} & 73&100.0\% & 37 \\
+\hline
+\hyperref[Do:56]{Do} & 56&100.0\% & 37 \\
+\hline
+\hyperref[Do:39]{Do} & 39&100.0\% & 13 \\
+\hline
+\hyperref[Do:39]{Do} & 39&100.0\% & 52 \\
+\hline
+\hyperref[Do:24]{Do} & 24&100.0\% & 5 \\
+\hline
+\hyperref[RTALConfirm:66]{RTALConfirm} & 66&100.0\% & 20 \\
+\hline
+\hyperref[RTALInitialize:32]{RTALInitialize} & 32&100.0\% & 10 \\
+\hline
+\hyperref[RTALMemory:12]{RTALMemory} & 12&100.0\% & 5 \\
+\hline
+\hyperref[RTALStart:32]{RTALStart} & 32&100.0\% & 13 \\
+\hline
+\hyperref[RTALStart:32]{RTALStart} & 32&100.0\% & 18 \\
+\hline
+\hyperref[RTALVote:49]{RTALVote} & 49&100.0\% & 20 \\
+\hline
+\hyperref[add:6]{add} & 6&100.0\% & 91 \\
+\hline
+\hline
+RTAL.vdmpp & & 100.0\% & 321 \\
+\hline
+\end{longtable}
+

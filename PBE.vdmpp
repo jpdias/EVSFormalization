@@ -12,7 +12,6 @@ operations
 	addToBallot(c) == ballot := {c} union ballot
 	pre c.name <> []
 	post c in set ballot;
-   --ballot = {c} union ballot~; 
 --Add new Voter to PBE voters set
   public addVoter: Voter ==> ()
 	addVoter(v) == voters := {v} union voters

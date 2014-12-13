@@ -1,7 +1,7 @@
 class DRE
 instance variables
 	private code: nat1 :=9999;
-	public memory: map Candidate to nat := {|->} ;
+	private memory: map Candidate to nat := {|->} ;
 	public log: RTALMemory := new RTALMemory();
 	private CurrentPBE: PBE;
 	public StateMachine: VoteState := new VoteState();

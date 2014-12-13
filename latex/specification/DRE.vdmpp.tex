@@ -1,0 +1,137 @@
+\begin{vdmpp}
+class DRE
+instance variables
+ private code: nat1 :=9999;
+ public memory: map Candidate to nat := {|->} ;
+ public log: RTALMemory := new RTALMemory();
+ private CurrentPBE: PBE;
+ public StateMachine: VoteState := new VoteState();
+ private CurrentChoice: Candidate := new Candidate(); 
+ private CurrentVoter: Voter := new Voter();
+operations
+-- Constructor
+(*@
+\label{DRE:12}
+@*)
+ public DRE: PBE ==> DRE 
+ DRE(pbe) == (
+       
+       CurrentPBE := pbe;
+       StateMachine.toStop();
+       memory :={|->};
+       for all cand in set CurrentPBE.ballot do
+          (
+        memory:=memory++{cand|->0};
+          );
+          log.add(new RTALInitialize(memory));
+       return self)
+ pre 
+  pbe.ballot <> {}
+  and pbe.voters <> {}
+  and pbe.code = code
+ post 
+  self.CurrentPBE.ballot = pbe.ballot
+  and self.CurrentPBE.voters = pbe.voters;
+ 
+(*@
+\label{getResult:32}
+@*)
+ public getResult:() ==> map Candidate to nat
+ getResult()== return memory;
+ 
+--Voting sequence state machine
+(*@
+\label{StartVote:36}
+@*)
+ public StartVote: Voter ==> ()
+ StartVote(v) == (
+   log.add(new RTALStart(v));
+   StateMachine.toInit();
+   CurrentVoter := v;
+ )
+ pre StateMachine.currentState=<STOP>
+   and card CurrentPBE.voters <> 0
+   and v in set CurrentPBE.voters
+   and v not in set CurrentPBE.previousVoters
+ post StateMachine.currentState=<INIT>
+    and v = CurrentVoter;
+
+(*@
+\label{Vote:49}
+@*)
+ public Vote: Candidate ==> ()
+ Vote(c) == (
+   log.add(new RTALVote(c));
+   StateMachine.toConfirm();
+   CurrentChoice := c
+ )
+ pre StateMachine.currentState=<INIT>
+   and CurrentVoter in set CurrentPBE.voters
+   and c in set CurrentPBE.ballot
+ post StateMachine.currentState=<CONFIRM>
+    and c = CurrentChoice
+    and CurrentVoter in set CurrentPBE.voters
+    and CurrentChoice in set CurrentPBE.ballot;
+ ------------------------------------------------------------------------------------
+(*@
+\label{ConfirmVote:63}
+@*)
+ public ConfirmVote: bool ==>()
+ ConfirmVote(confirm) == (
+   log.add(new RTALConfirm(confirm,CurrentChoice));
+   if(confirm)
+   then(
+     memory(CurrentChoice):=memory(CurrentChoice)+1;
+     CurrentPBE.voteAct(CurrentVoter); 
+     if(CurrentPBE.voters = {})
+     then(
+      StateMachine.toEnd();
+     )
+     else(
+      StateMachine.toStop();
+     );
+     )
+   else(
+     StateMachine.toInit();
+     )
+ )
+ pre StateMachine.currentState=<CONFIRM> 
+   and CurrentVoter.name <> []
+   and CurrentChoice.name <> []
+ post (StateMachine.currentState=<STOP>
+    and CurrentVoter in set CurrentPBE.previousVoters
+    and CurrentVoter not in set CurrentPBE.voters
+    )
+    or (
+    StateMachine.currentState=<INIT>
+    and CurrentVoter in set CurrentPBE.voters)
+    or (
+    StateMachine.currentState=<END>
+    and CurrentVoter in set CurrentPBE.previousVoters
+    and CurrentVoter not in set CurrentPBE.voters
+    );
+functions
+ 
+end DRE
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[ConfirmVote:63]{ConfirmVote} & 63&100.0\% & 74 \\
+\hline
+\hyperref[DRE:12]{DRE} & 12&100.0\% & 35 \\
+\hline
+\hyperref[StartVote:36]{StartVote} & 36&100.0\% & 68 \\
+\hline
+\hyperref[Vote:49]{Vote} & 49&100.0\% & 76 \\
+\hline
+\hyperref[getResult:32]{getResult} & 32&100.0\% & 18 \\
+\hline
+\hline
+DRE.vdmpp & & 100.0\% & 271 \\
+\hline
+\end{longtable}
+

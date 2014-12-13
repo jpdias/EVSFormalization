@@ -1,6 +1,5 @@
 class RTALMemory
 instance variables
-	---public static record: map Candidate to nat := {|->};
   public static memory: seq of RTAL := [];
 operations
 	public add: RTAL ==> ()
@@ -8,14 +7,6 @@ operations
 	 memory := memory ^ [rt]; 
 	)
 	post len memory = len memory~+1;
-	
-	--public RTALMemory: map Candidate to nat ==> RTALMemory
-	--RTALMemory(rec) == (
-		--								 memory:=[];
-			--							 record := rec; 
-				--					   return self)
-	--pre card dom rec <> 0 
-	--post record = rec;
 end RTALMemory
 -----------------------------------------------------------------------
 class RTAL 
@@ -37,7 +28,10 @@ operations
 	post candidates = temp;
 	
 	public Do :  (map Candidate to nat) ==> (map Candidate to nat)
-	Do(record) ==  (return candidates;)
+	Do(record) ==  (
+		dcl temp : map Candidate to nat := record;
+		temp :=candidates;
+		return temp)
 	pre card dom candidates <> 0;
 	
 end RTALInitialize
@@ -69,8 +63,6 @@ operations
 	RTALVote(c) == (
 							candidate := c;
 							return self);
---	pre c in set dom record
---	post candidate in set dom record;
 	
 	public Do :  (map Candidate to nat) ==> (map Candidate to nat)
 	Do(record) == (return record;)
@@ -102,6 +94,5 @@ operations
 		);
 	)
 	pre (confirm = true or confirm = false)
-	--post candidate in set dom record;
 end RTALConfirm
 

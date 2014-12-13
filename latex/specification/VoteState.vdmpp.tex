@@ -1,0 +1,58 @@
+\begin{vdmpp}
+class VoteState
+types
+ public STATE = <INIT> | <CONFIRM> | <STOP> | <END>;
+instance variables
+ public currentState: STATE := <STOP>;
+operations
+(*@
+\label{toConfirm:7}
+@*)
+ public toConfirm: () ==> ()
+ toConfirm() == currentState := <CONFIRM>
+ pre currentState = <INIT>
+ post currentState = <CONFIRM>;
+ 
+(*@
+\label{toInit:12}
+@*)
+ public toInit: () ==> ()
+ toInit() == currentState := <INIT>
+ pre currentState = <STOP> or  currentState = <CONFIRM>
+ post currentState = <INIT>;
+ 
+(*@
+\label{toEnd:17}
+@*)
+ public toEnd: () ==> ()
+ toEnd() == currentState := <END>
+ pre currentState = <CONFIRM>
+ post currentState = <END>;
+ 
+(*@
+\label{toStop:22}
+@*)
+ public toStop: () ==> ()
+ toStop() == currentState := <STOP>
+ post currentState = <STOP>;
+end VoteState
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[toConfirm:7]{toConfirm} & 7&100.0\% & 94 \\
+\hline
+\hyperref[toEnd:17]{toEnd} & 17&100.0\% & 14 \\
+\hline
+\hyperref[toInit:12]{toInit} & 12&100.0\% & 96 \\
+\hline
+\hyperref[toStop:22]{toStop} & 22&100.0\% & 106 \\
+\hline
+\hline
+VoteState.vdmpp & & 100.0\% & 310 \\
+\hline
+\end{longtable}
+

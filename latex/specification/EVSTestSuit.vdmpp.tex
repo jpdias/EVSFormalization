@@ -1,0 +1,174 @@
+\begin{vdmpp}
+class EVSTestSuit
+
+instance variables
+ voteTable: PBE := new PBE();
+ voterOne: Voter := new Voter("Joaquim",1001);
+ voterTwo: Voter :=  new Voter("Joao",1002);
+ voterThree: Voter:= new Voter("Correia",1003);
+ voterFour: Voter:= new Voter("Rui",1004);
+ candidateOne: Candidate:= new Candidate("PS");
+ candidateTwo: Candidate:= new Candidate("PSD");
+ candidateThree: Candidate:= new Candidate("CDS");
+ candidateFour: Candidate:= new Candidate("Livre");
+ VotingProcess: DRE := new DRE();
+operations
+
+(*@
+\label{assertTrue:16}
+@*)
+private assertTrue: bool ==> ()
+ assertTrue(cond) == return
+ pre cond;
+
+(*@
+\label{testVoting:20}
+@*)
+private testVoting: () ==> ()
+testVoting() ==
+(
+ dcl record: map Candidate to nat :={|->};
+ 
+ voteTable.addVoter(voterOne);
+ voteTable.addVoter(voterTwo);
+ voteTable.addVoter(voterThree);
+ voteTable.addVoter(voterFour);
+ assertTrue(card voteTable.voters = 4);
+ voteTable.addToBallot(candidateOne);
+ voteTable.addToBallot(candidateTwo);
+ voteTable.addToBallot(candidateThree);
+ voteTable.addToBallot(candidateFour);
+ assertTrue(card voteTable.ballot = 4);
+ VotingProcess:= new DRE(voteTable);
+ VotingProcess.StartVote(voterOne);
+ VotingProcess.Vote(candidateOne);
+ VotingProcess.ConfirmVote(true);
+ assertTrue(card voteTable.voters = 3);
+ assertTrue(card voteTable.previousVoters = 1);
+ VotingProcess.StartVote(voterTwo);
+ VotingProcess.Vote(candidateOne);
+ VotingProcess.ConfirmVote(true);
+ assertTrue(VotingProcess.getResult()(candidateOne)=2);
+ assertTrue(card voteTable.voters = 2);
+ assertTrue(card voteTable.previousVoters = 2);
+ 
+ for entry in RTALMemory`memory 
+  do (
+    record:=entry.Do(record);
+  );
+  assertTrue(VotingProcess.memory = record);
+  
+);
+(*@
+\label{testReChoiceVoting:55}
+@*)
+
+private testReChoiceVoting: () ==> ()
+testReChoiceVoting() ==
+( 
+ dcl record: map Candidate to nat:={|->};
+ 
+ voteTable.addVoter(voterOne);
+ voteTable.addVoter(voterTwo);
+ voteTable.addVoter(voterThree);
+ voteTable.addVoter(voterFour);
+ assertTrue(card voteTable.voters = 4);
+ voteTable.addToBallot(candidateOne);
+ voteTable.addToBallot(candidateTwo);
+ voteTable.addToBallot(candidateThree);
+ voteTable.addToBallot(candidateFour);
+ assertTrue(card voteTable.ballot = 4);
+ VotingProcess:= new DRE(voteTable);
+ VotingProcess.StartVote(voterOne);
+ VotingProcess.Vote(candidateOne);
+ VotingProcess.ConfirmVote(false);
+ assertTrue(card voteTable.voters = 4);
+ assertTrue(card voteTable.previousVoters = 0);
+ VotingProcess.Vote(candidateTwo);
+ VotingProcess.ConfirmVote(true);
+ assertTrue(VotingProcess.getResult()(candidateTwo)=1);
+ assertTrue(card voteTable.voters = 3);
+ assertTrue(card voteTable.previousVoters = 1);
+ 
+ for entry in RTALMemory`memory 
+  do (
+    record:=entry.Do(record);
+  );
+   
+(*@
+\label{testEnd:88}
+@*)
+  assertTrue(VotingProcess.memory = record);
+);
+
+private testEnd: () ==> ()
+testEnd() ==
+( 
+ dcl record: map Candidate to nat:={|->};
+ voteTable.addVoter(voterOne);
+ voteTable.addVoter(voterTwo);
+ voteTable.addVoter(voterThree);
+ voteTable.addVoter(voterFour);
+ assertTrue(card voteTable.voters = 4);
+ voteTable.addToBallot(candidateOne);
+ voteTable.addToBallot(candidateTwo);
+ voteTable.addToBallot(candidateThree);
+ voteTable.addToBallot(candidateFour);
+ assertTrue(card voteTable.ballot = 4);
+ VotingProcess:= new DRE(voteTable);
+ VotingProcess.StartVote(voterOne);
+ VotingProcess.Vote(candidateOne);
+ VotingProcess.ConfirmVote(true);
+ VotingProcess.StartVote(voterTwo);
+ VotingProcess.Vote(candidateOne);
+ VotingProcess.ConfirmVote(true);
+ VotingProcess.StartVote(voterThree);
+ VotingProcess.Vote(candidateTwo);
+ VotingProcess.ConfirmVote(true);
+ VotingProcess.StartVote(voterFour);
+ VotingProcess.Vote(candidateTwo);
+ VotingProcess.ConfirmVote(true);
+ assertTrue(VotingProcess.StateMachine.currentState = <END>);
+ 
+ --audit
+ for entry in RTALMemory`memory 
+  do (
+    record:=entry.Do(record);
+  );
+(*@
+\label{main:125}
+@*)
+   
+  assertTrue(VotingProcess.memory = record);
+);
+
+public static main: () ==> ()
+main() ==(
+ new EVSTestSuit().testEnd();
+ new EVSTestSuit().testVoting();
+ new EVSTestSuit().testReChoiceVoting();
+);
+
+end EVSTestSuit
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[assertTrue:16]{assertTrue} & 16&100.0\% & 200 \\
+\hline
+\hyperref[main:125]{main} & 125&100.0\% & 4 \\
+\hline
+\hyperref[testEnd:88]{testEnd} & 88&100.0\% & 4 \\
+\hline
+\hyperref[testReChoiceVoting:55]{testReChoiceVoting} & 55&100.0\% & 3 \\
+\hline
+\hyperref[testVoting:20]{testVoting} & 20&100.0\% & 9 \\
+\hline
+\hline
+EVSTestSuit.vdmpp & & 100.0\% & 220 \\
+\hline
+\end{longtable}
+

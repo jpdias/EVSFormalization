@@ -1,0 +1,70 @@
+\begin{vdmpp}
+class PBE
+instance variables
+ public ballot: set of Candidate := {};
+ public voters: set of Voter := {};
+ public previousVoters:  set of Voter :={};
+ public static code: nat1 :=9999;
+ --inv cannot exists the same vouter in previousVoters and vice-versa
+ inv card (voters inter previousVoters) = 0;
+operations
+--Add new Candidate to PBE ballot set
+(*@
+\label{addToBallot:11}
+@*)
+ public addToBallot: Candidate ==> ()
+ addToBallot(c) == ballot := {c} union ballot
+ pre c.name <> []
+ post c in set ballot;
+--Add new Voter to PBE voters set
+  public addVoter: Voter ==> ()
+(*@
+\label{addVoter:17}
+@*)
+ addVoter(v) == voters := {v} union voters
+ pre v.name <> []
+  and v.code > 1000 
+  and v.code < 9999
+ post v in set voters;
+ 
+--Voter finished
+ public voteAct: Voter ==> ()
+(*@
+\label{voteAct:25}
+@*)
+ voteAct(v) == (
+         voters := remove[Voter](v,voters);
+         previousVoters := previousVoters union {v}
+        )
+ pre v in set voters
+ post v in set previousVoters
+    and v not in set voters
+    and card voters = card voters~-1
+    and card previousVoters = card previousVoters~+1;
+functions
+    public remove[@T](e: @T, s: set of @T) res: set of @T ==
+(*@
+\label{remove:36}
+@*)
+     {x | x in set s & x <> e};
+end PBE
+\end{vdmpp}
+\bigskip
+\begin{longtable}{|l|r|r|r|}
+\hline
+Function or operation & Line & Coverage & Calls \\
+\hline
+\hline
+\hyperref[addToBallot:11]{addToBallot} & 11&100.0\% & 140 \\
+\hline
+\hyperref[addVoter:17]{addVoter} & 17&100.0\% & 40 \\
+\hline
+\hyperref[remove:36]{remove} & 36&100.0\% & 25 \\
+\hline
+\hyperref[voteAct:25]{voteAct} & 25&100.0\% & 25 \\
+\hline
+\hline
+PBE.vdmpp & & 100.0\% & 230 \\
+\hline
+\end{longtable}
+
