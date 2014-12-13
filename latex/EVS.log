@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.20)  13 DEC 2014 00:56
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.20)  13 DEC 2014 23:40
 entering extended mode
 **EVS.tex
-(D:\FEUP_4Ano\1Semestre\MFES\latex\EVS.tex
+(D:\Projects\Eclipse\EVS\latex\EVS.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -489,7 +489,10 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 \rot@float@box=\box32
 \rot@mess@toks=\toks19
 )
-(D:\FEUP_4Ano\1Semestre\MFES\latex\EVS.aux
+(D:\Projects\Eclipse\EVS\latex\EVS.aux
+
+LaTeX Warning: Label `fig:PropProf' multiply defined.
+
 
 LaTeX Warning: Label `fig:PropProf' multiply defined.
 
@@ -547,8 +550,7 @@ LaTeX Info: Redefining \ref on input line 12.
 LaTeX Info: Redefining \pageref on input line 12.
 LaTeX Info: Redefining \nameref on input line 12.
 
-(D:\FEUP_4Ano\1Semestre\MFES\latex\EVS.out)
-(D:\FEUP_4Ano\1Semestre\MFES\latex\EVS.out)
+(D:\Projects\Eclipse\EVS\latex\EVS.out) (D:\Projects\Eclipse\EVS\latex\EVS.out)
 \@outlinefile=\write3
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 28.
@@ -556,7 +558,6 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 28.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 28.
-
 <feup.pdf, id=71, 338.26375pt x 126.4725pt>
 File: feup.pdf Graphic file (type pdf)
  <use feup.pdf>
@@ -570,8 +571,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 28.
  [1
 
-{C:/Users/JP/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <D:/FEUP_4Ano/1
-Semestre/MFES/latex/feup.pdf>] (D:\FEUP_4Ano\1Semestre\MFES\latex\EVS.toc
+{C:/Users/JP/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <D:/Projects/Ec
+lipse/EVS/latex/feup.pdf>] (D:\Projects\Eclipse\EVS\latex\EVS.toc
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -584,92 +585,199 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 32.
 
-<state.png, id=110, 647.41875pt x 290.08376pt>
+Overfull \hbox (2.62437pt too wide) in paragraph at lines 36--45
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--59
+[]\OT1/ptm/m/n/10 1.The cur-rent state of State Ma-chine is STOP.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--59
+\OT1/ptm/m/n/10 2.The vot-ers of the PEB are not empty.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--59
+\OT1/ptm/m/n/10 3.The cur-rent voter is in vot-ers of PEB. (\OT1/ptm/m/it/10 in
+-put\OT1/ptm/m/n/10 )
+ []
+
+
+Overfull \hbox (0.43404pt too wide) in paragraph at lines 51--69
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--80
+[]\OT1/ptm/m/n/10 1.The cur-rent state of State Ma-chine is INIT.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--80
+\OT1/ptm/m/n/10 2.The cur-rent voter is in PEB vot-ers.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--85
+[]\OT1/ptm/m/n/10 1.The cur-rent State of State Ma-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--85
+\OT1/ptm/m/n/10 chine is CON-FIRM. (\OT1/ptm/m/it/10 fi-nal sys-tem state\OT1/p
+tm/m/n/10 )
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--85
+\OT1/ptm/m/n/10 2.The voted can-di-date is the same that the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 81--85
+\OT1/ptm/m/n/10 se-lected in bal-lot. (\OT1/ptm/m/it/10 fi-nal sys-tem state\OT
+1/ptm/m/n/10 )
+ []
+
+
+Overfull \hbox (0.43404pt too wide) in paragraph at lines 72--93
+ [] 
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 101--104
+[]\OT1/ptm/m/n/10 1.The cur-rent state of State Ma-chine is con-firm.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--104
+\OT1/ptm/m/n/10 2.The Voter name ex-ists.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 106--116
+\OT1/ptm/m/n/10 Or
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 106--116
+\OT1/ptm/m/n/10 Or
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--120
+[]\OT1/ptm/m/n/10 1.The Voter chooses a can-di-date.
+ []
+
+
+Overfull \hbox (0.43404pt too wide) in paragraph at lines 97--125
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 132--134
+[]\OT1/ptm/m/n/10 1.The Voter name is not empty.
+ []
+
+
+Overfull \hbox (0.43404pt too wide) in paragraph at lines 128--143
+ [] 
+ []
+
+
+Overfull \hbox (0.43404pt too wide) in paragraph at lines 146--160
+ [] 
+ []
+
+[4] <use.png, id=118, 602.25pt x 314.17375pt>
+File: use.png Graphic file (type png)
+ <use use.png>
+Package pdftex.def Info: use.png used on input line 164.
+(pdftex.def)             Requested size: 345.0137pt x 179.98215pt.
+
+<state.png, id=119, 647.41875pt x 290.08376pt>
 File: state.png Graphic file (type png)
  <use state.png>
-Package pdftex.def Info: state.png used on input line 39.
+Package pdftex.def Info: state.png used on input line 171.
 (pdftex.def)             Requested size: 344.99739pt x 154.58022pt.
 
-<uml.png, id=111, 852.18375pt x 1017.8025pt>
+<uml.png, id=120, 852.18375pt x 1017.8025pt>
 File: uml.png Graphic file (type png)
  <use uml.png>
-Package pdftex.def Info: uml.png used on input line 46.
+Package pdftex.def Info: uml.png used on input line 178.
 (pdftex.def)             Requested size: 345.00249pt x 412.05246pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-(D:\FEUP_4Ano\1Semestre\MFES\latex\specification/Candidate.vdmpp.tex
+ [5 <D:/Projects/Eclipse/EVS/latex/use.png (PNG copy)> <D:/Projects/Eclipse/EVS
+/latex/state.png (PNG copy)>] (D:\Projects\Eclipse\EVS\latex\specification/Cand
+idate.vdmpp.tex
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 1.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
+) [6 <D:/Projects/Eclipse/EVS/latex/uml.png (PNG copy)>]
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <8> not available
 (Font)              Font shape `OT1/pcr/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <8> not available
 (Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 6.
- [3 <D:/FEUP_4Ano/1Semestre/MFES/latex/state.png (PNG copy)>]
+
 Underfull \vbox (badness 10000) detected at line 27
  []
 
-) (D:\FEUP_4Ano\1Semestre\MFES\latex\specification/Voter.vdmpp.tex
+) (D:\Projects\Eclipse\EVS\latex\specification/Voter.vdmpp.tex
 Underfull \vbox (badness 10000) detected at line 35
  []
 
-) (D:\FEUP_4Ano\1Semestre\MFES\latex\specification/PBE.vdmpp.tex
-Overfull \vbox (450.93153pt too high) has occurred while \output is active []
-
-
-[4 <D:/FEUP_4Ano/1Semestre/MFES/latex/uml.png (PNG copy)>]
+) (D:\Projects\Eclipse\EVS\latex\specification/PBE.vdmpp.tex [7]
 Underfull \vbox (badness 10000) detected at line 69
  []
 
-) (D:\FEUP_4Ano\1Semestre\MFES\latex\specification/VoteState.vdmpp.tex [5]
+) (D:\Projects\Eclipse\EVS\latex\specification/VoteState.vdmpp.tex [8]
 Underfull \vbox (badness 10000) detected at line 57
  []
 
-) (D:\FEUP_4Ano\1Semestre\MFES\latex\specification/DRE.vdmpp.tex [6]
+) (D:\Projects\Eclipse\EVS\latex\specification/DRE.vdmpp.tex [9] [10]
 Overfull \hbox (63.00415pt too wide) in paragraph at lines 75--76
 [][][][][][] 
  []
 
-[7]
+
 Underfull \vbox (badness 10000) detected at line 136
  []
 
-) (D:\FEUP_4Ano\1Semestre\MFES\latex\specification/RTAL.vdmpp.tex [8] [9]
+) (D:\Projects\Eclipse\EVS\latex\specification/RTAL.vdmpp.tex [11] [12]
 Underfull \vbox (badness 10000) detected at line 170
  []
 
-[10]) (D:\FEUP_4Ano\1Semestre\MFES\latex\specification/EVSTestSuit.vdmpp.tex
-[11] [12]
+[13]) (D:\Projects\Eclipse\EVS\latex\specification/EVSTestSuit.vdmpp.tex
+[14] [15]
 Underfull \vbox (badness 10000) detected at line 173
  []
 
-) [13]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 74.
- [14]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 74.
- (D:\FEUP_4Ano\1Semestre\MFES\latex\EVS.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 74.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 74.
+[16])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 206.
+ [17]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 206.
+ (D:\Projects\Eclipse\EVS\latex\EVS.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 206.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 206.
 Package rerunfilecheck Info: File `EVS.out' has not changed.
-(rerunfilecheck)             Checksum: F109576038793D9FBBC93DEE6D6ED16D;1037.
+(rerunfilecheck)             Checksum: B98DF20203B85BA719BBE9FFD056E0BC;1034.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 74.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 206.
  ) 
 Here is how much of TeX's memory you used:
- 8254 strings out of 493921
- 116870 string characters out of 3147291
- 229541 words of memory out of 3000000
- 10924 multiletter control sequences out of 15000+200000
- 21931 words of font info for 48 fonts, out of 3000000 for 9000
+ 8264 strings out of 493921
+ 116860 string characters out of 3147291
+ 238554 words of memory out of 3000000
+ 10929 multiletter control sequences out of 15000+200000
+ 23615 words of font info for 50 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 33i,7n,48p,236b,1906s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,8n,48p,236b,2029s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files/MiKTeX 2.9/fo
@@ -678,9 +786,9 @@ ourier/ucrro8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fo
 nts/type1/urw/times/utmri8a.pfb>
-Output written on EVS.pdf (14 pages, 289084 bytes).
+Output written on EVS.pdf (17 pages, 313456 bytes).
 PDF statistics:
- 803 PDF objects out of 1000 (max. 8388607)
- 505 named destinations out of 1000 (max. 500000)
- 152 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 817 PDF objects out of 1000 (max. 8388607)
+ 509 named destinations out of 1000 (max. 500000)
+ 157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

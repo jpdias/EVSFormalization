@@ -1,18 +1,18 @@
 \select@language {english}
 \contentsline {section}{\numberline {1}Informal system description and list of requirements}{3}{section.1}
 \contentsline {subsection}{\numberline {1.1}Informal system description}{3}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}List of requirements}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.2}Requirements List}{3}{subsection.1.2}
 \contentsline {section}{\numberline {2}Visual UML Model}{3}{section.2}
 \contentsline {subsection}{\numberline {2.1}Use case model}{3}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}State machine model}{3}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Class model}{3}{subsection.2.3}
-\contentsline {section}{\numberline {3}Formal VDM++ Model}{3}{section.3}
-\contentsline {subsection}{\numberline {3.1}Candidate}{3}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Voter}{4}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}PBE}{4}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}VoteState}{5}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}DRE}{6}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}RTAL}{8}{subsection.3.6}
-\contentsline {section}{\numberline {4}Model Validation}{11}{section.4}
-\contentsline {subsection}{\numberline {4.1}EVSTestSuit}{11}{subsection.4.1}
-\contentsline {section}{\numberline {5}Bibliography}{14}{section.5}
+\contentsline {subsection}{\numberline {2.2}State machine model}{5}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Class model}{6}{subsection.2.3}
+\contentsline {section}{\numberline {3}Formal VDM++ Model}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Candidate}{6}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Voter}{7}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}PBE}{7}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}VoteState}{9}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}DRE}{9}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}RTAL}{11}{subsection.3.6}
+\contentsline {section}{\numberline {4}Model Validation}{14}{section.4}
+\contentsline {subsection}{\numberline {4.1}EVSTestSuit}{14}{subsection.4.1}
+\contentsline {section}{\numberline {5}Bibliography}{17}{section.5}

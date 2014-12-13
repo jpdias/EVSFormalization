@@ -30,9 +30,141 @@ Eduardo José Valadar Martins  - 201104191 (ei11104@fe.up.pt)\\
 \newpage
 \section{Informal system description and list of requirements}
 \subsection{Informal system description}
-\subsection{List of requirements}
+\subsection{Requirements List}
+
+\begin{center}
+    \begin{tabular}{ | l | l  | p{9cm} |}
+    \hline
+    ID	& Priority & Description \\ \hline
+    R1 &	Mandatory&	The Voter can start voting by indicating his name and code. \\ \hline
+   R2& Mandatory&The Voter can choose candidate from ballot by indicating his name.\\ \hline
+    R3	&Mandatory&	The Vote Table can create/manage an election adding it a new Voter or a new Candidate. \\ \hline
+  R4&Mandatory&The Vote Table, after the voting action from Voter, should be able to remove from the list that Voter, using his name and code.  \\ 
+    \hline
+    \end{tabular}
+\end{center}
+
 \section{Visual UML Model}
 \subsection{Use case model}
+
+\begin{center}
+    \begin{tabular}{ | l | p{9cm} |}
+    \hline
+   \textbf{Scenario}	& \textbf{Starting Vote}  \\ \hline
+    \textbf{Description}	& Normal scenario for initialize the vote act and for update the current voter. \\ \hline
+   \textbf{Pre-conditions}	& 1.The current state of State Machine is STOP.\linebreak
+2.The voters of the PEB are not empty.\linebreak
+3.The current voter is in voters of PEB. (\textit{input})\linebreak
+4.The current voter is not in voters of PEB. (\textit{input})
+\\ \hline
+ \textbf{Post-conditions} &	1.	The current State of State Machine is INIT. (\textit{final system state})\linebreak
+2.	The Voter is the same voter in the ballot. (\textit{final system state})
+   \\ \hline
+   \textbf{Steps} &	(unspecified) \\ 
+    \hline
+\textbf{Exceptions}& 	(unspecified)
+ \\ 
+    \hline
+    \end{tabular}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{ | l | p{9cm} |}
+    \hline
+   \textbf{Scenario}	& \textbf{Choose candidate from ballot}  \\ \hline
+    \textbf{Description}	& Normal scenario for choosing a candidate from a list of them. \\ \hline
+   \textbf{Pre-conditions}	& 1.The current state of State Machine is INIT.\linebreak
+2.The current voter is in PEB voters.\linebreak
+3.The candidate exists in the ballot.
+ (\textit{input})
+\\ \hline
+ \textbf{Post-conditions} &1.The current State of State Machine is CONFIRM. (\textit{final system state})\linebreak
+2.The voted candidate is the same that the selected in ballot. (\textit{final system state})\linebreak
+3.The current voter is in PEB voters. (\textit{final system state})\linebreak
+4.The current candidate is in PEB ballot. (\textit{final system state})
+
+   \\ \hline
+   \textbf{Steps} &	(unspecified) \\ 
+    \hline
+\textbf{Exceptions}& 	(unspecified)
+ \\ 
+    \hline
+    \end{tabular}
+\end{center}
+
+
+\begin{center}
+    \begin{tabular}{ | l | p{9cm} |}
+    \hline
+   \textbf{Scenario}	& \textbf{Confirm Vote}  \\ \hline
+    \textbf{Description}	& Normal scenario for choosing a candidate from a list of them.\\ \hline
+   \textbf{Pre-conditions}	& 1.The current state of State Machine is confirm.\linebreak
+2.The Voter name exists.\linebreak
+3.The Candidate name exists.
+
+\\ \hline
+ \textbf{Post-conditions} & 1.The current State of State Machine is STOP. (\textit{final system state})\linebreak
+2.The current voter is in PEB previous voters. (\textit{final system state})\linebreak
+3.The current voter is not in PEB voters. (\textit{final system state})\linebreak
+Or\linebreak
+1.The current State of State Machine is INIT. (\textit{final system state})\linebreak
+2.The current voter is in PEB voters. (\textit{final system state})\linebreak
+Or\linebreak
+1.The current State of State Machine is END. (\textit{final system state})\linebreak
+2.The current voter is in PEB previous voters. (\textit{final system state})\linebreak
+3.The current voter is not in PEB voters. (\textit{final system state})
+   \\ \hline
+   \textbf{Steps} &1.The Voter chooses a candidate.\linebreak
+2.The Voter confirm is vote.
+ \\ 
+    \hline
+\textbf{Exceptions}& 	(unspecified)
+ \\ 
+    \hline
+    \end{tabular}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{ | l | p{9cm} |}
+    \hline
+   \textbf{Scenario}	& \textbf{Add new Voter }  \\ \hline
+    \textbf{Description}	&Normal scenario for adding a Voter to PEB.\\ \hline
+   \textbf{Pre-conditions}	&1.The Voter name is not empty.\linebreak
+2.The Voter code is valid (between 1000 and 9999).
+\\ \hline
+ \textbf{Post-conditions} & 1.The Voter is added to PEB as intended. (\textit{final system state}) \\ \hline
+   \textbf{Steps} &  (unspecified)
+ \\ 
+    \hline
+\textbf{Exceptions}& 	(unspecified)
+ \\ 
+    \hline
+    \end{tabular}
+\end{center}
+
+\begin{center}
+    \begin{tabular}{ | l | p{9cm} |}
+    \hline
+   \textbf{Scenario}	& \textbf{Add new Candidate }  \\ \hline
+    \textbf{Description}	&Normal scenario for adding a Candidate to PEB.\\ \hline
+   \textbf{Pre-conditions}	&1.The Candidate name is not empty.
+\\ \hline
+ \textbf{Post-conditions} & 1.The Candidate is added to PEB as intended. (final system state)  (\textit{final system state}) \\ \hline
+   \textbf{Steps} &  (unspecified)
+ \\ 
+    \hline
+\textbf{Exceptions}& 	(unspecified)
+ \\ 
+    \hline
+    \end{tabular}
+\end{center}
+
+\begin{figure}[!h]
+\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{use.png}
+	\caption{Use Case Diagram.}
+	\label{fig:PropProf}
+\end{figure}
 \subsection{State machine model}
 \begin{figure}[h!]
 \centering
@@ -63,7 +195,7 @@ Eduardo José Valadar Martins  - 201104191 (ei11104@fe.up.pt)\\
 \section{Model Validation}
 \subsection{EVSTestSuit}
 \input{specification/EVSTestSuit.vdmpp.tex}
-\renewcommand{\refname}{\section{Bibliography}} % Using "Sources" as the title of the section
+\renewcommand{\refname}{\section{Bibliography}} 
 \begin{thebibliography}{99}
 \bibitem{intro} 
 Pipattanasomporn M., Feroze H. and Rahman S., Multi-agent systems in a distributed smart grid: Design and implementation, 2009.
