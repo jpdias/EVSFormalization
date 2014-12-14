@@ -79,7 +79,7 @@ testReChoiceVoting() ==
 	assertTrue(VotingProcess.getResult()(candidateTwo)=1);
 	assertTrue(card voteTable.voters = 3);
 	assertTrue(card voteTable.previousVoters = 1);
-	
+	assertTrue(voterOne in set voteTable.previousVoters);
 	for entry in RTALMemory`memory 
   do (
    	record:=entry.Do(record);

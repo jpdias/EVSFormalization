@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.20)  13 DEC 2014 23:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.20)  14 DEC 2014 23:36
 entering extended mode
 **EVS.tex
 (D:\Projects\Eclipse\EVS\latex\EVS.tex
@@ -489,7 +489,18 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 \rot@float@box=\box32
 \rot@mess@toks=\toks19
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count113
+\float@exts=\toks20
+\float@box=\box33
+\@float@everytoks=\toks21
+\@floatcapt=\box34
+)
 (D:\Projects\Eclipse\EVS\latex\EVS.aux
+
+LaTeX Warning: Label `fig:PropProf' multiply defined.
+
 
 LaTeX Warning: Label `fig:PropProf' multiply defined.
 
@@ -523,20 +534,20 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (C:\Users\JP\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count113
+\scratchcounter=\count114
 \scratchdimen=\dimen115
-\scratchbox=\box33
-\nofMPsegments=\count114
-\nofMParguments=\count115
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count116
+\scratchbox=\box35
+\nofMPsegments=\count115
+\nofMParguments=\count116
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count117
 \MPscratchDim=\dimen116
-\MPnumerator=\count117
-\makeMPintoPDFobject=\count118
-\everyMPtoPDFconversion=\toks21
+\MPnumerator=\count118
+\makeMPintoPDFobject=\count119
+\everyMPtoPDFconversion=\toks23
 )
-\c@lstlisting=\count119
-\AtBeginShipoutBox=\box34
+\c@lstlisting=\count120
+\AtBeginShipoutBox=\box36
 Package hyperref Info: Link coloring OFF on input line 12.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -544,7 +555,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count120
+\c@section@level=\count121
 )
 LaTeX Info: Redefining \ref on input line 12.
 LaTeX Info: Redefining \pageref on input line 12.
@@ -558,7 +569,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 28.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 28.
-<feup.pdf, id=71, 338.26375pt x 126.4725pt>
+<feup.pdf, id=87, 338.26375pt x 126.4725pt>
 File: feup.pdf Graphic file (type pdf)
  <use feup.pdf>
 Package pdftex.def Info: feup.pdf used on input line 28.
@@ -589,134 +600,157 @@ Overfull \hbox (2.62437pt too wide) in paragraph at lines 36--45
  [] 
  []
 
+<use.png, id=130, 602.25pt x 314.17375pt>
+File: use.png Graphic file (type png)
+ <use use.png>
+Package pdftex.def Info: use.png used on input line 52.
+(pdftex.def)             Requested size: 345.0137pt x 179.98215pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--59
+Underfull \hbox (badness 10000) in paragraph at lines 62--66
 []\OT1/ptm/m/n/10 1.The cur-rent state of State Ma-chine is STOP.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--59
-\OT1/ptm/m/n/10 2.The vot-ers of the PEB are not empty.
+Underfull \hbox (badness 10000) in paragraph at lines 62--66
+\OT1/ptm/m/n/10 2.The vot-ers of the PBE are not empty.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 55--59
-\OT1/ptm/m/n/10 3.The cur-rent voter is in vot-ers of PEB. (\OT1/ptm/m/it/10 in
+Underfull \hbox (badness 10000) in paragraph at lines 62--66
+\OT1/ptm/m/n/10 3.The cur-rent voter is in vot-ers of PBE. (\OT1/ptm/m/it/10 in
 -put\OT1/ptm/m/n/10 )
  []
 
 
-Overfull \hbox (0.43404pt too wide) in paragraph at lines 51--69
+Overfull \hbox (0.43404pt too wide) in paragraph at lines 58--76
  [] 
  []
 
+[3pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
+has been already used, duplicate ignored
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--80
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.76 \end{center}
+                  <D:/Projects/Eclipse/EVS/latex/use.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 83--87
 []\OT1/ptm/m/n/10 1.The cur-rent state of State Ma-chine is INIT.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--80
-\OT1/ptm/m/n/10 2.The cur-rent voter is in PEB vot-ers.
+Underfull \hbox (badness 10000) in paragraph at lines 83--87
+\OT1/ptm/m/n/10 2.The cur-rent voter is in PBE vot-ers.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--85
+Underfull \hbox (badness 10000) in paragraph at lines 88--92
 []\OT1/ptm/m/n/10 1.The cur-rent State of State Ma-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--85
+Underfull \hbox (badness 10000) in paragraph at lines 88--92
 \OT1/ptm/m/n/10 chine is CON-FIRM. (\OT1/ptm/m/it/10 fi-nal sys-tem state\OT1/p
 tm/m/n/10 )
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--85
+Underfull \hbox (badness 10000) in paragraph at lines 88--92
 \OT1/ptm/m/n/10 2.The voted can-di-date is the same that the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--85
+Underfull \hbox (badness 10000) in paragraph at lines 88--92
 \OT1/ptm/m/n/10 se-lected in bal-lot. (\OT1/ptm/m/it/10 fi-nal sys-tem state\OT
 1/ptm/m/n/10 )
  []
 
 
-Overfull \hbox (0.43404pt too wide) in paragraph at lines 72--93
+Overfull \hbox (0.43404pt too wide) in paragraph at lines 79--100
  [] 
  []
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 101--104
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--111
 []\OT1/ptm/m/n/10 1.The cur-rent state of State Ma-chine is con-firm.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--104
+Underfull \hbox (badness 10000) in paragraph at lines 108--111
 \OT1/ptm/m/n/10 2.The Voter name ex-ists.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--116
+Underfull \hbox (badness 10000) in paragraph at lines 113--123
 \OT1/ptm/m/n/10 Or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--116
+Underfull \hbox (badness 10000) in paragraph at lines 113--123
 \OT1/ptm/m/n/10 Or
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--120
+Underfull \hbox (badness 10000) in paragraph at lines 124--127
 []\OT1/ptm/m/n/10 1.The Voter chooses a can-di-date.
  []
 
 
-Overfull \hbox (0.43404pt too wide) in paragraph at lines 97--125
+Overfull \hbox (0.43404pt too wide) in paragraph at lines 104--132
  [] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 132--134
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 139--141
 []\OT1/ptm/m/n/10 1.The Voter name is not empty.
  []
 
 
-Overfull \hbox (0.43404pt too wide) in paragraph at lines 128--143
+Overfull \hbox (0.43404pt too wide) in paragraph at lines 135--150
  [] 
  []
 
 
-Overfull \hbox (0.43404pt too wide) in paragraph at lines 146--160
+Overfull \hbox (0.43404pt too wide) in paragraph at lines 153--167
  [] 
  []
 
-[4] <use.png, id=118, 602.25pt x 314.17375pt>
-File: use.png Graphic file (type png)
- <use use.png>
-Package pdftex.def Info: use.png used on input line 164.
-(pdftex.def)             Requested size: 345.0137pt x 179.98215pt.
-
-<state.png, id=119, 647.41875pt x 290.08376pt>
+<state.png, id=140, 647.41875pt x 290.08376pt>
 File: state.png Graphic file (type png)
  <use state.png>
-Package pdftex.def Info: state.png used on input line 171.
+Package pdftex.def Info: state.png used on input line 173.
 (pdftex.def)             Requested size: 344.99739pt x 154.58022pt.
 
-<uml.png, id=120, 852.18375pt x 1017.8025pt>
+<uml.png, id=141, 852.18375pt x 1017.8025pt>
 File: uml.png Graphic file (type png)
  <use uml.png>
-Package pdftex.def Info: uml.png used on input line 178.
+Package pdftex.def Info: uml.png used on input line 180.
 (pdftex.def)             Requested size: 345.00249pt x 412.05246pt.
- [5 <D:/Projects/Eclipse/EVS/latex/use.png (PNG copy)> <D:/Projects/Eclipse/EVS
-/latex/state.png (PNG copy)>] (D:\Projects\Eclipse\EVS\latex\specification/Cand
-idate.vdmpp.tex
+
+<test.png, id=142, 261.97874pt x 141.52875pt>
+File: test.png Graphic file (type png)
+ <use test.png>
+Package pdftex.def Info: test.png used on input line 186.
+(pdftex.def)             Requested size: 183.38387pt x 99.06944pt.
+ [5pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.189 \end{figure}
+                   <D:/Projects/Eclipse/EVS/latex/state.png (PNG copy)>]
+[6pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.190 
+       <D:/Projects/Eclipse/EVS/latex/uml.png (PNG copy)>]
+(D:\Projects\Eclipse\EVS\latex\specification/Candidate.vdmpp.tex
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 1.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [6 <D:/Projects/Eclipse/EVS/latex/uml.png (PNG copy)>]
+)
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <8> not available
 (Font)              Font shape `OT1/pcr/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <8> not available
@@ -725,59 +759,79 @@ LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <8> not available
 Underfull \vbox (badness 10000) detected at line 27
  []
 
-) (D:\Projects\Eclipse\EVS\latex\specification/Voter.vdmpp.tex
+
+Overfull \vbox (2.3582pt too high) has occurred while \output is active []
+
+
+[7pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.27 \end{longtable}
+                     <D:/Projects/Eclipse/EVS/latex/test.png (PNG copy)>])
+(D:\Projects\Eclipse\EVS\latex\specification/Voter.vdmpp.tex
 Underfull \vbox (badness 10000) detected at line 35
  []
 
-) (D:\Projects\Eclipse\EVS\latex\specification/PBE.vdmpp.tex [7]
+) (D:\Projects\Eclipse\EVS\latex\specification/PBE.vdmpp.tex [8]
 Underfull \vbox (badness 10000) detected at line 69
  []
 
-) (D:\Projects\Eclipse\EVS\latex\specification/VoteState.vdmpp.tex [8]
+) (D:\Projects\Eclipse\EVS\latex\specification/VoteState.vdmpp.tex [9]
 Underfull \vbox (badness 10000) detected at line 57
  []
 
-) (D:\Projects\Eclipse\EVS\latex\specification/DRE.vdmpp.tex [9] [10]
+) (D:\Projects\Eclipse\EVS\latex\specification/DRE.vdmpp.tex [10]
 Overfull \hbox (63.00415pt too wide) in paragraph at lines 75--76
 [][][][][][] 
  []
 
-
+[11]
 Underfull \vbox (badness 10000) detected at line 136
  []
 
-) (D:\Projects\Eclipse\EVS\latex\specification/RTAL.vdmpp.tex [11] [12]
+) (D:\Projects\Eclipse\EVS\latex\specification/RTAL.vdmpp.tex [12] [13]
 Underfull \vbox (badness 10000) detected at line 170
  []
 
-[13]) (D:\Projects\Eclipse\EVS\latex\specification/EVSTestSuit.vdmpp.tex
-[14] [15]
+) (D:\Projects\Eclipse\EVS\latex\specification/EVSTestSuit.vdmpp.tex [14]
+[15] [16]
 Underfull \vbox (badness 10000) detected at line 173
  []
 
-[16])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 206.
- [17]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 206.
+)
+Overfull \hbox (4.1485pt too wide) in paragraph at lines 227--232
+ [] 
+ []
+
+[17] [18]
+Underfull \hbox (badness 10000) in paragraph at lines 317--318
+[]\OT1/ptm/m/n/10 Command Pat-tern, Ob-ject Ori-ented De-sign,
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 323.
+[19]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 323.
  (D:\Projects\Eclipse\EVS\latex\EVS.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 206.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 206.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 323.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 323.
 Package rerunfilecheck Info: File `EVS.out' has not changed.
-(rerunfilecheck)             Checksum: B98DF20203B85BA719BBE9FFD056E0BC;1034.
+(rerunfilecheck)             Checksum: 7C91123B5243A827AAF7DB71A1F7FD86;1300.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 206.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 323.
  ) 
 Here is how much of TeX's memory you used:
- 8264 strings out of 493921
- 116860 string characters out of 3147291
- 238554 words of memory out of 3000000
- 10929 multiletter control sequences out of 15000+200000
- 23615 words of font info for 50 fonts, out of 3000000 for 9000
+ 8371 strings out of 493921
+ 118191 string characters out of 3147291
+ 230008 words of memory out of 3000000
+ 10993 multiletter control sequences out of 15000+200000
+ 27863 words of font info for 55 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 33i,8n,48p,236b,2029s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 33i,8n,48p,618b,1902s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files/MiKTeX 2.9/fo
@@ -786,9 +840,9 @@ ourier/ucrro8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pf
 b><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fo
 nts/type1/urw/times/utmri8a.pfb>
-Output written on EVS.pdf (17 pages, 313456 bytes).
+Output written on EVS.pdf (19 pages, 336603 bytes).
 PDF statistics:
- 817 PDF objects out of 1000 (max. 8388607)
- 509 named destinations out of 1000 (max. 500000)
- 157 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 889 PDF objects out of 1000 (max. 8388607)
+ 544 named destinations out of 1000 (max. 500000)
+ 194 words of extra memory for PDF output out of 10000 (max. 10000000)
 

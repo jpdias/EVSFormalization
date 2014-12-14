@@ -30,7 +30,8 @@ operations
 	post v in set previousVoters
 			 and v not in set voters
 			 and card voters = card voters~-1
-			 and card previousVoters = card previousVoters~+1;
+			 and card previousVoters = card previousVoters~+1
+			 and v in set previousVoters;
 functions
     public remove[@T](e: @T, s: set of @T) res: set of @T ==
     	{x | x in set s & x <> e};

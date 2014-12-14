@@ -8,7 +8,7 @@
 \usepackage{longtable}
 \usepackage{lscape}
 \usepackage{rotating}
-
+\usepackage{float}
 \begin{document}
 \title{\Huge\textbf{\textit{Electronic Voting System}}\linebreak
 \Large\textbf{\\Assignment 5 (T05)}\linebreak\linebreak\linebreak
@@ -39,13 +39,20 @@ Eduardo José Valadar Martins  - 201104191 (ei11104@fe.up.pt)\\
     R1 &	Mandatory&	The Voter can start voting by indicating his name and code. \\ \hline
    R2& Mandatory&The Voter can choose candidate from ballot by indicating his name.\\ \hline
     R3	&Mandatory&	The Vote Table can create/manage an election adding it a new Voter or a new Candidate. \\ \hline
-  R4&Mandatory&The Vote Table, after the voting action from Voter, should be able to remove from the list that Voter, using his name and code.  \\ 
-    \hline
+  R4&Mandatory&The Vote Table, after the voting action from Voter, should be able to remove from the list that Voter, using his name and code.  \\ \hline
+  R5 & Mandatory & The system has to give the possibility to run audits on the elections. \\\hline
     \end{tabular}
 \end{center}
 
 \section{Visual UML Model}
 \subsection{Use case model}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{use.png}
+	\caption{Use Case Diagram.}
+	\label{fig:PropProf}
+\end{figure}
 
 \begin{center}
     \begin{tabular}{ | l | p{9cm} |}
@@ -53,9 +60,9 @@ Eduardo José Valadar Martins  - 201104191 (ei11104@fe.up.pt)\\
    \textbf{Scenario}	& \textbf{Starting Vote}  \\ \hline
     \textbf{Description}	& Normal scenario for initialize the vote act and for update the current voter. \\ \hline
    \textbf{Pre-conditions}	& 1.The current state of State Machine is STOP.\linebreak
-2.The voters of the PEB are not empty.\linebreak
-3.The current voter is in voters of PEB. (\textit{input})\linebreak
-4.The current voter is not in voters of PEB. (\textit{input})
+2.The voters of the PBE are not empty.\linebreak
+3.The current voter is in voters of PBE. (\textit{input})\linebreak
+4.The current voter is not in voters of PBE. (\textit{input})
 \\ \hline
  \textbf{Post-conditions} &	1.	The current State of State Machine is INIT. (\textit{final system state})\linebreak
 2.	The Voter is the same voter in the ballot. (\textit{final system state})
@@ -74,14 +81,14 @@ Eduardo José Valadar Martins  - 201104191 (ei11104@fe.up.pt)\\
    \textbf{Scenario}	& \textbf{Choose candidate from ballot}  \\ \hline
     \textbf{Description}	& Normal scenario for choosing a candidate from a list of them. \\ \hline
    \textbf{Pre-conditions}	& 1.The current state of State Machine is INIT.\linebreak
-2.The current voter is in PEB voters.\linebreak
+2.The current voter is in PBE voters.\linebreak
 3.The candidate exists in the ballot.
  (\textit{input})
 \\ \hline
  \textbf{Post-conditions} &1.The current State of State Machine is CONFIRM. (\textit{final system state})\linebreak
 2.The voted candidate is the same that the selected in ballot. (\textit{final system state})\linebreak
-3.The current voter is in PEB voters. (\textit{final system state})\linebreak
-4.The current candidate is in PEB ballot. (\textit{final system state})
+3.The current voter is in PBE voters. (\textit{final system state})\linebreak
+4.The current candidate is in PBE ballot. (\textit{final system state})
 
    \\ \hline
    \textbf{Steps} &	(unspecified) \\ 
@@ -104,15 +111,15 @@ Eduardo José Valadar Martins  - 201104191 (ei11104@fe.up.pt)\\
 
 \\ \hline
  \textbf{Post-conditions} & 1.The current State of State Machine is STOP. (\textit{final system state})\linebreak
-2.The current voter is in PEB previous voters. (\textit{final system state})\linebreak
-3.The current voter is not in PEB voters. (\textit{final system state})\linebreak
+2.The current voter is in PBE previous voters. (\textit{final system state})\linebreak
+3.The current voter is not in PBE voters. (\textit{final system state})\linebreak
 Or\linebreak
 1.The current State of State Machine is INIT. (\textit{final system state})\linebreak
-2.The current voter is in PEB voters. (\textit{final system state})\linebreak
+2.The current voter is in PBE voters. (\textit{final system state})\linebreak
 Or\linebreak
 1.The current State of State Machine is END. (\textit{final system state})\linebreak
-2.The current voter is in PEB previous voters. (\textit{final system state})\linebreak
-3.The current voter is not in PEB voters. (\textit{final system state})
+2.The current voter is in PBE previous voters. (\textit{final system state})\linebreak
+3.The current voter is not in PBE voters. (\textit{final system state})
    \\ \hline
    \textbf{Steps} &1.The Voter chooses a candidate.\linebreak
 2.The Voter confirm is vote.
@@ -128,11 +135,11 @@ Or\linebreak
     \begin{tabular}{ | l | p{9cm} |}
     \hline
    \textbf{Scenario}	& \textbf{Add new Voter }  \\ \hline
-    \textbf{Description}	&Normal scenario for adding a Voter to PEB.\\ \hline
+    \textbf{Description}	&Normal scenario for adding a Voter to PBE.\\ \hline
    \textbf{Pre-conditions}	&1.The Voter name is not empty.\linebreak
 2.The Voter code is valid (between 1000 and 9999).
 \\ \hline
- \textbf{Post-conditions} & 1.The Voter is added to PEB as intended. (\textit{final system state}) \\ \hline
+ \textbf{Post-conditions} & 1.The Voter is added to PBE as intended. (\textit{final system state}) \\ \hline
    \textbf{Steps} &  (unspecified)
  \\ 
     \hline
@@ -146,10 +153,10 @@ Or\linebreak
     \begin{tabular}{ | l | p{9cm} |}
     \hline
    \textbf{Scenario}	& \textbf{Add new Candidate }  \\ \hline
-    \textbf{Description}	&Normal scenario for adding a Candidate to PEB.\\ \hline
+    \textbf{Description}	&Normal scenario for adding a Candidate to PBE.\\ \hline
    \textbf{Pre-conditions}	&1.The Candidate name is not empty.
 \\ \hline
- \textbf{Post-conditions} & 1.The Candidate is added to PEB as intended. (final system state)  (\textit{final system state}) \\ \hline
+ \textbf{Post-conditions} & 1.The Candidate is added to PBE as intended. (final system state)  (\textit{final system state}) \\ \hline
    \textbf{Steps} &  (unspecified)
  \\ 
     \hline
@@ -159,26 +166,42 @@ Or\linebreak
     \end{tabular}
 \end{center}
 
-\begin{figure}[!h]
-\centering
-	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{use.png}
-	\caption{Use Case Diagram.}
-	\label{fig:PropProf}
-\end{figure}
+
 \subsection{State machine model}
-\begin{figure}[h!]
+\begin{figure}[H]
 \centering
 	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{state.png}
 	\caption{State Machine Diagram (Vote Process).}
 	\label{fig:PropProf}
 \end{figure}
 \subsection{Class model}
-\begin{figure}[!h]
+\begin{figure}[H]
 \centering
 	\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{uml.png}
 	\caption{Class Model Diagram.}
 	\label{fig:PropProf}
 \end{figure}
+\begin{figure}[H]
+\centering
+	\includegraphics[scale=0.7]{test.png}
+	\caption{Class Model Diagram.}
+	\label{fig:PropProf}
+\end{figure}
+
+\begin{center}
+    \begin{tabular}{ | l | p{9.2cm} |}
+    \hline
+   \textbf{Class}	& \textbf{Description}  \\ \hline
+	Candidate & Defines a Candidate present in the election ballot. \\\hline
+	Voter & Defines a Voter present in the voters list for the election. \\\hline
+	PBE & Defines the vote table that contains all the voters and defines the election ballot \\\hline
+	DRE & Core Model, defines the state variables and operations available to the voters.\\\hline
+	VoteState &  Define the set of possible states and the operations to change state. \\\hline
+	RTAL & Superclass for RTAL classes; defines RTALInitialize, RTALStart, RTALVote and RTALConfirm. Used to save each action in DRE by the voters.\\\hline
+	RTALMemory & Defines the system memory using RTAL objects.\\\hline 
+    \end{tabular}
+\end{center}
+
 \section{Formal VDM++ Model}\label{xpto}
 \subsection{Candidate}
 \input{specification/Candidate.vdmpp.tex}
@@ -195,10 +218,104 @@ Or\linebreak
 \section{Model Validation}
 \subsection{EVSTestSuit}
 \input{specification/EVSTestSuit.vdmpp.tex}
-\renewcommand{\refname}{\section{Bibliography}} 
+
+\section{Model Verification}
+\subsection{Example of domain verification}
+One of the proof obligations generated by Overture is:
+
+\begin{center}
+    \begin{tabular}{ | l | l | p{7cm} |}
+    \hline
+   \textbf{No.}	& \textbf{PO Name} & \textbf{Type} \\ \hline
+	5 & DRE`ConfirmVote(bool) & legal map application\\\hline
+    \end{tabular}
+\end{center}
+
+The code under analysis is the presented Proof Obligation:
+
+\begin{vdmpp}
+(forall confirm:bool & ((((StateMachine.currentState) = <CONFIRM>) 
+and (((CurrentVoter.name) <> []) and ((CurrentChoice.name) <> [])))
+ => (CurrentChoice in set (dom memory))))
+\end{vdmpp}
+
+In this case the proof is trivial because the quantification 'CurrentChoice in set (dom memory)' assures that the map is accesses only inside its domain.
+
+\subsection{Example of invariant verification}
+
+Another proof obligation generated by Overture is:
+
+\begin{center}
+    \begin{tabular}{ | l | l | p{7cm} |}
+    \hline
+   \textbf{No.}	& \textbf{PO Name} & \textbf{Type} \\ \hline
+	37 & PBE`voteAct(Voter) & state invariant holds\\\hline
+    \end{tabular}
+\end{center}
+
+The code under analysis is:
+
+\begin{vdmpp}
+public voteAct: Voter ==> ()
+voteAct(v) == (
+			voters := remove[Voter](v,voters);
+		    previousVoters := previousVoters union {v}
+			)
+\end{vdmpp}
+
+The relevant invariant under analysis is:
+
+\begin{vdmpp}
+inv card (voters inter previousVoters) = 0;
+\end{vdmpp}
+
+
+After the execution of the code block under analysis we have (technically, this is the post-condition of the block):
+
+\begin{vdmpp}
+v in set previousVoters
+and v not in set voters
+and card voters = card voters~-1
+and card previousVoters = card previousVoters~+1;
+\end{vdmpp}
+
+We have to prove that this implies that the invariant holds, i.e., that the following condition holds:
+
+\begin{vdmpp}
+(forall v:Voter & ((v in set voters) => 
+(((card (voters inter previousVoters)) = 0) => 
+((card ((remove)[Voter](v, voters) inter previousVoters)) = 0))))
+\end{vdmpp}
+
+This formally implies that:
+
+\begin{vdmpp}
+(v in set voters) => (card ({v} inter previousVoters) = 0) 
+\end{vdmpp}
+
+which is obviously true since if we have a pending 'voter' it cannot be in 'previousVoters'.
+
+\section{Conclusions}
+The model that was developed covers all the requirements as presented in \textit{Formal Specification and Analysis of an E-voting System}\cite{intro} and \textit{Formal analysis of an electronic voting system: An experience report}\cite{intro2}.
+
+With the objective of adding another layer of verifications to the system, it has been added to the requirements in \cite{intro} and \cite{intro2}, an auditing system, capable of verify if the results of an election are valid. This replicates a well-known pattern called \textit{Command pattern}\footnote{Command design pattern encapsulates commands (method calls) in objects allowing us to issue requests without knowing the requested operation or the requesting object. Command design pattern provides the options to queue commands, undo/redo actions and other manipulations\cite{cmd}.}.
+
+This project took approximately 22 hours to develop.
+
+
+\renewcommand{\refname}{\section{References}} 
 \begin{thebibliography}{99}
 \bibitem{intro} 
-Pipattanasomporn M., Feroze H. and Rahman S., Multi-agent systems in a distributed smart grid: Design and implementation, 2009.
+Formal Specification and Analysis of an E-voting System, ARES 2010, Fifth International Conference on Availability, Reliability and Security, 15-18 February 2010, Krakow, Poland
+\bibitem{intro2}
+Formal analysis of an electronic voting system: An experience report, Weldemariam, K., et al., J. Syst. Software (2011)
+\bibitem{intro3}
+VDM-10 Language Manual, Peter Gorm Larsen et al, Overture Technical Report Series No. TR-001, March 2014
+\bibitem{intro4}
+Overture tool web site, http://overturetool.org 
+\bibitem{cmd}
+Command Pattern, Object Oriented Design, http://www.oodesign.com/command-pattern.html, 2014.
+
 \end{thebibliography}
 
 
