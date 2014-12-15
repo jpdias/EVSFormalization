@@ -30,6 +30,31 @@ Eduardo José Valadar Martins  - 201104191 (ei11104@fe.up.pt)\\
 \newpage
 \section{Informal system description and list of requirements}
 \subsection{Informal system description}
+
+
+\begin{figure}[H]
+\centering
+	\includegraphics[scale=0.5]{1.png}
+	\caption{A voter can enter the credentials to vote.}
+	\label{fig:PropProf}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[scale=0.5]{2.png}
+	\caption{A voter can choose the candidate.}
+	\label{fig:PropProf}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+	\includegraphics[scale=0.5]{3.png}
+	\caption{Final window. Confirm vote or cancel and repeat the choice action.}
+	\label{fig:PropProf}
+\end{figure}
+
+
+
 \subsection{Requirements List}
 
 \begin{center}
@@ -136,8 +161,8 @@ Or\linebreak
     \hline
    \textbf{Scenario}	& \textbf{Add new Voter }  \\ \hline
     \textbf{Description}	&Normal scenario for adding a Voter to PBE.\\ \hline
-   \textbf{Pre-conditions}	&1.The Voter name is not empty.\linebreak
-2.The Voter code is valid (between 1000 and 9999).
+   \textbf{Pre-conditions}	&1.The Voter name is not empty. (\textit{input})\linebreak
+2.The Voter code is valid (between 1000 and 9999).(\textit{input})
 \\ \hline
  \textbf{Post-conditions} & 1.The Voter is added to PBE as intended. (\textit{final system state}) \\ \hline
    \textbf{Steps} &  (unspecified)
@@ -154,9 +179,9 @@ Or\linebreak
     \hline
    \textbf{Scenario}	& \textbf{Add new Candidate }  \\ \hline
     \textbf{Description}	&Normal scenario for adding a Candidate to PBE.\\ \hline
-   \textbf{Pre-conditions}	&1.The Candidate name is not empty.
+   \textbf{Pre-conditions}	&1.The Candidate name is not empty.(\textit{input})
 \\ \hline
- \textbf{Post-conditions} & 1.The Candidate is added to PBE as intended. (final system state)  (\textit{final system state}) \\ \hline
+ \textbf{Post-conditions} & 1.The Candidate is added to PBE as intended. (\textit{final system state}) \\ \hline
    \textbf{Steps} &  (unspecified)
  \\ 
     \hline
