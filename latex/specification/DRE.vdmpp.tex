@@ -2,16 +2,18 @@
 class DRE
 instance variables
  private code: nat1 :=9999;
- public memory: map Candidate to nat := {|->} ;
+ private memory: map Candidate to nat := {|->} ;
  public log: RTALMemory := new RTALMemory();
  private CurrentPBE: PBE;
  public StateMachine: VoteState := new VoteState();
  private CurrentChoice: Candidate := new Candidate(); 
  private CurrentVoter: Voter := new Voter();
+ 
+ inv card CurrentPBE.ballot > 0;
 operations
 -- Constructor
 (*@
-\label{DRE:12}
+\label{DRE:14}
 @*)
  public DRE: PBE ==> DRE 
  DRE(pbe) == (
@@ -34,14 +36,14 @@ operations
   and self.CurrentPBE.voters = pbe.voters;
  
 (*@
-\label{getResult:32}
+\label{getResult:34}
 @*)
  public getResult:() ==> map Candidate to nat
  getResult()== return memory;
  
 --Voting sequence state machine
 (*@
-\label{StartVote:36}
+\label{StartVote:38}
 @*)
  public StartVote: Voter ==> ()
  StartVote(v) == (
@@ -57,7 +59,7 @@ operations
     and v = CurrentVoter;
 
 (*@
-\label{Vote:49}
+\label{Vote:51}
 @*)
  public Vote: Candidate ==> ()
  Vote(c) == (
@@ -74,7 +76,7 @@ operations
     and CurrentChoice in set CurrentPBE.ballot;
  ------------------------------------------------------------------------------------
 (*@
-\label{ConfirmVote:63}
+\label{ConfirmVote:65}
 @*)
  public ConfirmVote: bool ==>()
  ConfirmVote(confirm) == (
@@ -120,18 +122,18 @@ end DRE
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[ConfirmVote:63]{ConfirmVote} & 63&100.0\% & 74 \\
+\hyperref[ConfirmVote:65]{ConfirmVote} & 65&100.0\% & 24 \\
 \hline
-\hyperref[DRE:12]{DRE} & 12&100.0\% & 35 \\
+\hyperref[DRE:14]{DRE} & 14&100.0\% & 9 \\
 \hline
-\hyperref[StartVote:36]{StartVote} & 36&100.0\% & 68 \\
+\hyperref[StartVote:38]{StartVote} & 38&100.0\% & 21 \\
 \hline
-\hyperref[Vote:49]{Vote} & 49&100.0\% & 76 \\
+\hyperref[Vote:51]{Vote} & 51&100.0\% & 24 \\
 \hline
-\hyperref[getResult:32]{getResult} & 32&100.0\% & 18 \\
+\hyperref[getResult:34]{getResult} & 34&100.0\% & 15 \\
 \hline
 \hline
-DRE.vdmpp & & 100.0\% & 271 \\
+DRE.vdmpp & & 100.0\% & 93 \\
 \hline
 \end{longtable}
 

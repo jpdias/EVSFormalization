@@ -17,10 +17,10 @@ operations
  pre c.name <> []
  post c in set ballot;
 --Add new Voter to PBE voters set
-  public addVoter: Voter ==> ()
 (*@
-\label{addVoter:17}
+\label{addVoter:16}
 @*)
+  public addVoter: Voter ==> ()
  addVoter(v) == voters := {v} union voters
  pre v.name <> []
   and v.code > 1000 
@@ -28,10 +28,10 @@ operations
  post v in set voters;
  
 --Voter finished
- public voteAct: Voter ==> ()
 (*@
-\label{voteAct:25}
+\label{voteAct:24}
 @*)
+ public voteAct: Voter ==> ()
  voteAct(v) == (
          voters := remove[Voter](v,voters);
          previousVoters := previousVoters union {v}
@@ -42,10 +42,10 @@ operations
     and card voters = card voters~-1
     and card previousVoters = card previousVoters~+1;
 functions
-    public remove[@T](e: @T, s: set of @T) res: set of @T ==
 (*@
-\label{remove:36}
+\label{remove:35}
 @*)
+    public remove[@T](e: @T, s: set of @T) res: set of @T ==
      {x | x in set s & x <> e};
 end PBE
 \end{vdmpp}
@@ -55,16 +55,16 @@ end PBE
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[addToBallot:11]{addToBallot} & 11&100.0\% & 140 \\
+\hyperref[addToBallot:11]{addToBallot} & 11&100.0\% & 236 \\
 \hline
-\hyperref[addVoter:17]{addVoter} & 17&100.0\% & 40 \\
+\hyperref[addVoter:16]{addVoter} & 16&100.0\% & 136 \\
 \hline
-\hyperref[remove:36]{remove} & 36&100.0\% & 25 \\
+\hyperref[remove:35]{remove} & 35&100.0\% & 74 \\
 \hline
-\hyperref[voteAct:25]{voteAct} & 25&100.0\% & 25 \\
+\hyperref[voteAct:24]{voteAct} & 24&100.0\% & 81 \\
 \hline
 \hline
-PBE.vdmpp & & 100.0\% & 230 \\
+PBE.vdmpp & & 100.0\% & 527 \\
 \hline
 \end{longtable}
 

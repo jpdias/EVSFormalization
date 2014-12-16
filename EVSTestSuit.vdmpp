@@ -10,7 +10,7 @@ instance variables
 	candidateTwo: Candidate:= new Candidate("PSD");
 	candidateThree: Candidate:= new Candidate("CDS");
 	candidateFour: Candidate:= new Candidate("Livre");
-	VotingProcess: DRE := new DRE();
+	VotingProcess: DRE;
 operations
 
 private assertTrue: bool ==> ()
@@ -69,13 +69,18 @@ testReChoiceVoting() ==
 	voteTable.addToBallot(candidateFour);
 	assertTrue(card voteTable.ballot = 4);
 	VotingProcess:= new DRE(voteTable);
+	assertTrue(VotingProcess.StateMachine.currentState = <STOP>);
 	VotingProcess.StartVote(voterOne);
+	assertTrue(VotingProcess.StateMachine.currentState = <INIT>);
 	VotingProcess.Vote(candidateOne);
+	assertTrue(VotingProcess.StateMachine.currentState = <CONFIRM>);
 	VotingProcess.ConfirmVote(false);
+	assertTrue(VotingProcess.StateMachine.currentState = <INIT>);
 	assertTrue(card voteTable.voters = 4);
 	assertTrue(card voteTable.previousVoters = 0);
 	VotingProcess.Vote(candidateTwo);
 	VotingProcess.ConfirmVote(true);
+	assertTrue(VotingProcess.StateMachine.currentState = <STOP>);
 	assertTrue(VotingProcess.getResult()(candidateTwo)=1);
 	assertTrue(card voteTable.voters = 3);
 	assertTrue(card voteTable.previousVoters = 1);

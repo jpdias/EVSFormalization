@@ -13,10 +13,10 @@
 \contentsline {subsection}{\numberline {3.4}VoteState}{11}{subsection.3.4}
 \contentsline {subsection}{\numberline {3.5}DRE}{12}{subsection.3.5}
 \contentsline {subsection}{\numberline {3.6}RTAL}{14}{subsection.3.6}
-\contentsline {section}{\numberline {4}Model Validation}{17}{section.4}
-\contentsline {subsection}{\numberline {4.1}EVSTestSuit}{17}{subsection.4.1}
-\contentsline {section}{\numberline {5}Model Verification}{19}{section.5}
-\contentsline {subsection}{\numberline {5.1}Example of domain verification}{19}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Example of invariant verification}{20}{subsection.5.2}
-\contentsline {section}{\numberline {6}Conclusions}{21}{section.6}
-\contentsline {section}{\numberline {7}References}{21}{section.7}
+\contentsline {section}{\numberline {4}Model Validation}{14}{section.4}
+\contentsline {subsection}{\numberline {4.1}EVSTestSuit}{14}{subsection.4.1}
+\contentsline {section}{\numberline {5}Model Verification}{17}{section.5}
+\contentsline {subsection}{\numberline {5.1}Example of domain verification}{17}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Example of invariant verification}{18}{subsection.5.2}
+\contentsline {section}{\numberline {6}Conclusions}{19}{section.6}
+\contentsline {section}{\numberline {7}References}{19}{section.7}

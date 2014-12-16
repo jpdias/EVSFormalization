@@ -11,7 +11,7 @@ instance variables
  candidateTwo: Candidate:= new Candidate("PSD");
  candidateThree: Candidate:= new Candidate("CDS");
  candidateFour: Candidate:= new Candidate("Livre");
- VotingProcess: DRE := new DRE();
+ VotingProcess: DRE;
 operations
 
 (*@
@@ -56,13 +56,13 @@ testVoting() ==
   do (
     record:=entry.Do(record);
   );
-  assertTrue(VotingProcess.memory = record);
+  assertTrue(VotingProcess.getResult() = record);
   
 );
-(*@
-\label{testReChoiceVoting:55}
-@*)
 
+(*@
+\label{testReChoiceVoting:56}
+@*)
 private testReChoiceVoting: () ==> ()
 testReChoiceVoting() ==
 ( 
@@ -79,26 +79,31 @@ testReChoiceVoting() ==
  voteTable.addToBallot(candidateFour);
  assertTrue(card voteTable.ballot = 4);
  VotingProcess:= new DRE(voteTable);
+ assertTrue(VotingProcess.StateMachine.currentState = <STOP>);
  VotingProcess.StartVote(voterOne);
+ assertTrue(VotingProcess.StateMachine.currentState = <INIT>);
  VotingProcess.Vote(candidateOne);
+ assertTrue(VotingProcess.StateMachine.currentState = <CONFIRM>);
  VotingProcess.ConfirmVote(false);
+ assertTrue(VotingProcess.StateMachine.currentState = <INIT>);
  assertTrue(card voteTable.voters = 4);
  assertTrue(card voteTable.previousVoters = 0);
  VotingProcess.Vote(candidateTwo);
  VotingProcess.ConfirmVote(true);
+ assertTrue(VotingProcess.StateMachine.currentState = <STOP>);
  assertTrue(VotingProcess.getResult()(candidateTwo)=1);
  assertTrue(card voteTable.voters = 3);
  assertTrue(card voteTable.previousVoters = 1);
- 
+ assertTrue(voterOne in set voteTable.previousVoters);
  for entry in RTALMemory`memory 
   do (
     record:=entry.Do(record);
+(*@
+\label{testEnd:91}
+@*)
   );
    
-(*@
-\label{testEnd:88}
-@*)
-  assertTrue(VotingProcess.memory = record);
+  assertTrue(VotingProcess.getResult() = record);
 );
 
 private testEnd: () ==> ()
@@ -134,12 +139,12 @@ testEnd() ==
  for entry in RTALMemory`memory 
   do (
     record:=entry.Do(record);
-  );
 (*@
-\label{main:125}
+\label{main:129}
 @*)
+  );
    
-  assertTrue(VotingProcess.memory = record);
+  assertTrue(VotingProcess.getResult() = record);
 );
 
 public static main: () ==> ()
@@ -157,18 +162,18 @@ end EVSTestSuit
 Function or operation & Line & Coverage & Calls \\
 \hline
 \hline
-\hyperref[assertTrue:16]{assertTrue} & 16&100.0\% & 200 \\
+\hyperref[assertTrue:16]{assertTrue} & 16&100.0\% & 375 \\
 \hline
-\hyperref[main:125]{main} & 125&100.0\% & 4 \\
+\hyperref[main:129]{main} & 129&100.0\% & 1 \\
 \hline
-\hyperref[testEnd:88]{testEnd} & 88&100.0\% & 4 \\
+\hyperref[testEnd:91]{testEnd} & 91&100.0\% & 1 \\
 \hline
-\hyperref[testReChoiceVoting:55]{testReChoiceVoting} & 55&100.0\% & 3 \\
+\hyperref[testReChoiceVoting:56]{testReChoiceVoting} & 56&100.0\% & 11 \\
 \hline
-\hyperref[testVoting:20]{testVoting} & 20&100.0\% & 9 \\
+\hyperref[testVoting:20]{testVoting} & 20&100.0\% & 17 \\
 \hline
 \hline
-EVSTestSuit.vdmpp & & 100.0\% & 220 \\
+EVSTestSuit.vdmpp & & 100.0\% & 405 \\
 \hline
 \end{longtable}
 
