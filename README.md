@@ -14,6 +14,8 @@ in wikipedia
 Specify and test in VDM++ an electronic voting system, comprising electronic voting machines (urnas eletrónicas), to be used by voters to electronically cast their votes, and an electronic electoral register (caderno eleitoral eletrónico), to be used by the electoral officials (mesas de voto) to identify and authorize voters.
 
 References:
-    Formal Specification and Analysis of an E-voting System, ARES 2010, Fifth International Conference on Availability, Reliability and Security, 15-18 February 2010, Krakow, Poland
-    Formal analysis of an electronic voting system: An experience report, Weldemariam, K., et al., J. Syst. Software (2011)
+
+Formal Specification and Analysis of an E-voting System, ARES 2010, Fifth International Conference on Availability, Reliability and Security, 15-18 February 2010, Krakow, Poland
+
+Formal analysis of an electronic voting system: An experience report, Weldemariam, K., et al., J. Syst. Software (2011)
 
